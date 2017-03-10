@@ -5,15 +5,15 @@ import android.database.Cursor;
 
 public class UserInfo implements Entry {
 
-    public int pk_UserId;
-    public String uk_Username;
-    public String idx_Nickname = "";
-    public String idx_Password;
-    public String idx_Email = "";
-    public int fk_SchoolRollId = -1;
-    public String idx_StudentNumber = "";
-    public int idx_ShareCourse = 1;
-    public int idx_Permission = 0;
+    private int pk_UserId;
+    private String uk_Username;
+    private String idx_Nickname = "";
+    private String idx_Password;
+    private String idx_Email = "";
+    private int fk_SchoolRollId = -1;
+    private String idx_StudentNumber = "";
+    private int idx_ShareCourse = 1;
+    private int idx_Permission = 0;
 
     public UserInfo(String username, String password) {
         uk_Username = username;
@@ -63,5 +63,13 @@ public class UserInfo implements Entry {
         return pk_UserId + ", " + uk_Username + ", " + idx_Nickname + ", " +
                 idx_Password + ", " + idx_Email + ", " + fk_SchoolRollId + ", " +
                 idx_StudentNumber + ", " + idx_ShareCourse + ", " + idx_Permission;
+    }
+
+    public boolean checkUsernameAndPassword(String username, String password) {
+        if (uk_Username.equals(username) && idx_Password.equals(password)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
