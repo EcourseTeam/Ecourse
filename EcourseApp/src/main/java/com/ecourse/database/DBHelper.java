@@ -7,7 +7,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.util.Log;
 
-public class DBHelper extends SQLiteOpenHelper {
+import com.ecourse.util.Constants;
+
+public class DBHelper extends SQLiteOpenHelper implements Constants {
 
     private final static String DB_NAME ="offline.db"; //数据库名
     private final static int VERSION = 1; //版本号
@@ -34,12 +36,12 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         Log.i(tag, "Create Table!");
         ContentValues cv;
-        db.execSQL("create table " + OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_KEY_POOL] + "(" +
+        db.execSQL("create table " + TABLE_ARRAY[TABLE_KEY_POOL] + "(" +
                 "pk_TableName varchar(32) primary key," +
                 "idx_KeyMax int)");
-        Log.i(tag, OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_KEY_POOL] + " created!");
+        Log.i(tag, TABLE_ARRAY[TABLE_KEY_POOL] + " created!");
         /* UserInfo */
-        db.execSQL("create table " + OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_USER_INFO] + "(" +
+        db.execSQL("create table " + TABLE_ARRAY[TABLE_USER_INFO] + "(" +
                 "pk_UserId int primary key," +
                 "uk_Username varchar(32)," +
                 "idx_Nickname text," +
@@ -50,41 +52,41 @@ public class DBHelper extends SQLiteOpenHelper {
                 "idx_ShareCourse int," +
                 "idx_Permission int)");
         cv = new ContentValues();
-        cv.put("pk_TableName", OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_USER_INFO]);
+        cv.put("pk_TableName", TABLE_ARRAY[TABLE_USER_INFO]);
         cv.put("idx_KeyMax", 0);
-        db.insert(OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_KEY_POOL], null, cv);
-        Log.i(tag, OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_USER_INFO] + " created!");
+        db.insert(TABLE_ARRAY[TABLE_KEY_POOL], null, cv);
+        Log.i(tag, TABLE_ARRAY[TABLE_USER_INFO] + " created!");
         /* SchoolRollInfo */
-        db.execSQL("create table " + OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_SCHOOL_ROLL_INFO] + "(" +
+        db.execSQL("create table " + TABLE_ARRAY[TABLE_SCHOOL_ROLL_INFO] + "(" +
                 "pk_SchoolRollId int primary key," +
                 "fk_SchoolId int," +
                 "fk_MajorId int)");
         cv = new ContentValues();
-        cv.put("pk_TableName", OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_SCHOOL_ROLL_INFO]);
+        cv.put("pk_TableName", TABLE_ARRAY[TABLE_SCHOOL_ROLL_INFO]);
         cv.put("idx_KeyMax", 0);
-        db.insert(OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_KEY_POOL], null, cv);
-        Log.i(tag, OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_SCHOOL_ROLL_INFO] + " created!");
+        db.insert(TABLE_ARRAY[TABLE_KEY_POOL], null, cv);
+        Log.i(tag, TABLE_ARRAY[TABLE_SCHOOL_ROLL_INFO] + " created!");
         /* SchoolInfo */
-        db.execSQL("create table " + OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_SCHOLL_INFO] + "(" +
+        db.execSQL("create table " + TABLE_ARRAY[TABLE_SCHOLL_INFO] + "(" +
                 "pk_SchoolId int primary key," +
                 "uk_SchoolName text)");
         cv = new ContentValues();
-        cv.put("pk_TableName", OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_SCHOOL_ROLL_INFO]);
+        cv.put("pk_TableName", TABLE_ARRAY[TABLE_SCHOOL_ROLL_INFO]);
         cv.put("idx_KeyMax", 0);
-        db.insert(OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_KEY_POOL], null, cv);
-        Log.i(tag, OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_USER_INFO] + " created!");
+        db.insert(TABLE_ARRAY[TABLE_KEY_POOL], null, cv);
+        Log.i(tag, TABLE_ARRAY[TABLE_USER_INFO] + " created!");
         /* AcademyInfo */
-        db.execSQL("create table " + OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_ACADEMY_INFO] + "(" +
+        db.execSQL("create table " + TABLE_ARRAY[TABLE_ACADEMY_INFO] + "(" +
                 "pk_AcademyId int primary key," +
                 "fk_SchoolId int," +
                 "idx_AcademyName text)");
         cv = new ContentValues();
-        cv.put("pk_TableName", OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_ACADEMY_INFO]);
+        cv.put("pk_TableName", TABLE_ARRAY[TABLE_ACADEMY_INFO]);
         cv.put("idx_KeyMax", 0);
-        db.insert(OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_KEY_POOL], null, cv);
-        Log.i(tag, OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_ACADEMY_INFO] + " created!");
+        db.insert(TABLE_ARRAY[TABLE_KEY_POOL], null, cv);
+        Log.i(tag, TABLE_ARRAY[TABLE_ACADEMY_INFO] + " created!");
         /* MajorInfo */
-        db.execSQL("create table " + OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_MAJOR_INFO] + "(" +
+        db.execSQL("create table " + TABLE_ARRAY[TABLE_MAJOR_INFO] + "(" +
                 "pk_MajorId int primary key," +
                 "fk_AcademyId int," +
                 "idx_MajorName text," +
@@ -92,12 +94,12 @@ public class DBHelper extends SQLiteOpenHelper {
                 "idx_Semester int," +
                 "idx_Week int)");
         cv = new ContentValues();
-        cv.put("pk_TableName", OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_MAJOR_INFO]);
+        cv.put("pk_TableName", TABLE_ARRAY[TABLE_MAJOR_INFO]);
         cv.put("idx_KeyMax", 0);
-        db.insert(OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_KEY_POOL], null, cv);
-        Log.i(tag, OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_MAJOR_INFO] + " created!");
+        db.insert(TABLE_ARRAY[TABLE_KEY_POOL], null, cv);
+        Log.i(tag, TABLE_ARRAY[TABLE_MAJOR_INFO] + " created!");
         /* TeacherInfo */
-        db.execSQL("create table " + OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_TEACHER_INFO] + "(" +
+        db.execSQL("create table " + TABLE_ARRAY[TABLE_TEACHER_INFO] + "(" +
                 "pk_TeacherId int primary key," +
                 "fk_AcademyId int," +
                 "idx_TeacherName text," +
@@ -105,12 +107,12 @@ public class DBHelper extends SQLiteOpenHelper {
                 "idx_CellPhone var(32)," +
                 "idx_Email var(32))");
         cv = new ContentValues();
-        cv.put("pk_TableName", OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_TEACHER_INFO]);
+        cv.put("pk_TableName", TABLE_ARRAY[TABLE_TEACHER_INFO]);
         cv.put("idx_KeyMax", 0);
-        db.insert(OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_KEY_POOL], null, cv);
-        Log.i(tag, OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_TEACHER_INFO] + " created!");
+        db.insert(TABLE_ARRAY[TABLE_KEY_POOL], null, cv);
+        Log.i(tag, TABLE_ARRAY[TABLE_TEACHER_INFO] + " created!");
         /* CourseInfo */
-        db.execSQL("create table " + OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_COURSE_INFO] + "(" +
+        db.execSQL("create table " + TABLE_ARRAY[TABLE_COURSE_INFO] + "(" +
                 "pk_CourseId int primary key," +
                 "fk_AcademyId int," +
                 "idx_CourseName text," +
@@ -121,12 +123,12 @@ public class DBHelper extends SQLiteOpenHelper {
                 "idx_CourseHours int," +
                 "idx_Materials text)");
         cv = new ContentValues();
-        cv.put("pk_TableName", OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_COURSE_INFO]);
+        cv.put("pk_TableName", TABLE_ARRAY[TABLE_COURSE_INFO]);
         cv.put("idx_KeyMax", 0);
-        db.insert(OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_KEY_POOL], null, cv);
-        Log.i(tag, OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_COURSE_INFO] + " created!");
+        db.insert(TABLE_ARRAY[TABLE_KEY_POOL], null, cv);
+        Log.i(tag, TABLE_ARRAY[TABLE_COURSE_INFO] + " created!");
         /* CoursePeriodInfo */
-        db.execSQL("create table " + OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_COURSE_PERIOD_INFO] + "(" +
+        db.execSQL("create table " + TABLE_ARRAY[TABLE_COURSE_PERIOD_INFO] + "(" +
                 "pk_CoursePeriodId int primary key," +
                 "fk_CourseId int," +
                 "idx_WeekFrom int," +
@@ -137,30 +139,30 @@ public class DBHelper extends SQLiteOpenHelper {
                 "idx_Alarm int," +
                 "idx_Place text)");
         cv = new ContentValues();
-        cv.put("pk_TableName", OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_COURSE_PERIOD_INFO]);
+        cv.put("pk_TableName", TABLE_ARRAY[TABLE_COURSE_PERIOD_INFO]);
         cv.put("idx_KeyMax", 0);
-        db.insert(OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_KEY_POOL], null, cv);
-        Log.i(tag, OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_COURSE_PERIOD_INFO] + " created!");
+        db.insert(TABLE_ARRAY[TABLE_KEY_POOL], null, cv);
+        Log.i(tag, TABLE_ARRAY[TABLE_COURSE_PERIOD_INFO] + " created!");
         /* CourseTableInfo */
-        db.execSQL("create table " + OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_COURSE_TABLE_INFO] + "(" +
+        db.execSQL("create table " + TABLE_ARRAY[TABLE_COURSE_TABLE_INFO] + "(" +
                 "pk_CourseTableId int primary key," +
                 "fk_UserId int," +
                 "idx_CourseTableName text)");
         cv = new ContentValues();
-        cv.put("pk_TableName", OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_COURSE_TABLE_INFO]);
+        cv.put("pk_TableName", TABLE_ARRAY[TABLE_COURSE_TABLE_INFO]);
         cv.put("idx_KeyMax", 0);
-        db.insert(OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_KEY_POOL], null, cv);
-        Log.i(tag, OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_COURSE_TABLE_INFO] + " created!");
+        db.insert(TABLE_ARRAY[TABLE_KEY_POOL], null, cv);
+        Log.i(tag, TABLE_ARRAY[TABLE_COURSE_TABLE_INFO] + " created!");
         /* CourseTableEntryInfo */
-        db.execSQL("create table " + OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_COURSE_TABLE_ENTRY_INFO] + "(" +
+        db.execSQL("create table " + TABLE_ARRAY[TABLE_COURSE_TABLE_ENTRY_INFO] + "(" +
                 "pk_CourseTableEntryId int primary key," +
                 "fk_CourseTableId int," +
                 "fk_CoursePeriodId int)");
         cv = new ContentValues();
-        cv.put("pk_TableName", OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_COURSE_TABLE_ENTRY_INFO]);
+        cv.put("pk_TableName", TABLE_ARRAY[TABLE_COURSE_TABLE_ENTRY_INFO]);
         cv.put("idx_KeyMax", 0);
-        db.insert(OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_KEY_POOL], null, cv);
-        Log.i(tag, OfflineDao.TABLE_ARRAY[OfflineDao.TABLE_COURSE_TABLE_ENTRY_INFO] + " created!");
+        db.insert(TABLE_ARRAY[TABLE_KEY_POOL], null, cv);
+        Log.i(tag, TABLE_ARRAY[TABLE_COURSE_TABLE_ENTRY_INFO] + " created!");
     }
 
     //版本更新时调用

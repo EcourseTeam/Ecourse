@@ -7,18 +7,13 @@ public class UserInfo implements Entry {
 
     private int pk_UserId;
     private String uk_Username;
-    private String idx_Nickname = "";
+    private String idx_Nickname;
     private String idx_Password;
-    private String idx_Email = "";
-    private int fk_SchoolRollId = -1;
-    private String idx_StudentNumber = "";
-    private int idx_ShareCourse = 1;
-    private int idx_Permission = 0;
-
-    public UserInfo(String username, String password) {
-        uk_Username = username;
-        idx_Password = password;
-    }
+    private String idx_Email;
+    private int fk_SchoolRollId;
+    private String idx_StudentNumber;
+    private int idx_ShareCourse;
+    private int idx_Permission;
 
     public UserInfo(String username, String nickname,
                     String password, String email, int schoolRollId,

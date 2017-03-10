@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 
 import com.ecourse.structure.UserInfo;
+import com.ecourse.util.Constants;
 
 public class UserInfoDao extends OfflineDaoImpl {
 

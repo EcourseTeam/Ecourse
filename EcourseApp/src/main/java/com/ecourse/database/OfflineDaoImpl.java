@@ -10,6 +10,7 @@ import java.util.Map;
 
 import com.ecourse.structure.Entry;
 import com.ecourse.structure.UserInfo;
+import com.ecourse.util.Constants;
 
 public class OfflineDaoImpl implements OfflineDao {
 
