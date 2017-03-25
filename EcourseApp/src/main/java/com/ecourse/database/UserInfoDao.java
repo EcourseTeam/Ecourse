@@ -13,13 +13,25 @@ public class UserInfoDao extends OfflineDaoImpl {
     }
 
     /**
-     * Add a new entry into UserInfo table with username and password. Other infromations will be initialized in default.
+     * Add a new entry into UserInfo table with username and password. Other information will be initialized in default.
      * @param username username of the user.
      * @param password password of the user.
      * @return insert status. -1 if failed.
      */
     public long add(String username, String password) {
         return add(username, username, password, "", -1, "", 1, 0);
+    }
+
+    /**
+     * Add a new entry into UserInfo table with username and password. Other information will be initialized in default.
+     * @param username username of the user.
+     * @param password password of the user.
+     * @param email
+     * @param schoolRollId 学籍ID
+     * @return insert status. -1 if failed.
+     */
+    public long add(String username, String password, String email, int schoolRollId) {
+        return add(username, username, password, email, schoolRollId, "", 1, 0);
     }
 
     /**
@@ -69,11 +81,7 @@ public class UserInfoDao extends OfflineDaoImpl {
 
     public boolean check(String username, String password) {
         UserInfo userInfo = get(username);
-        if (userInfo.checkUsernameAndPassword(username, password)) {
-            return true;
-        } else {
-            return false;
-        }
+        return userInfo.checkUsernameAndPassword(username, password);
     }
 
 }
