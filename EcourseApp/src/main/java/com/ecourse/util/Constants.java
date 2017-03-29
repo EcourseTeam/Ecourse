@@ -29,5 +29,12 @@ public interface Constants {
 
     /* User Info */
     String PK_USER_ID                       = "pk_UserId";
-
+    String UK_USERNAME                      = "uk_Username";
+    String IDX_NICKNAME                     = "idx_Nickname";
+    String IDX_PASSWORD                     = "idx_Password";
+    String IDX_EMAIL                        = "idx_Email";
+    String FK_SCHOOL_ROLL_ID                = "fk_SchoolRollId";
+    String IDX_STUDENT_NUMBER               = "idx_StudentNumber";
+    String IDX_SHARE_COURSE                 = "idx_ShareCourse";
+    String IDX_PERMISSION                   = "idx_Permission";
 }
