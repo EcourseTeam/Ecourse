@@ -2,7 +2,7 @@ package com.ecourse.util;
 
 public interface Constants {
 
-    String TABLE_ID_POOL                    = "tbl_IdPool";           /* 0 键池 */
+    //String TABLE_ID_POOL                    = "tbl_IdPool";           /* 0 键池 */
     String TABLE_USER_INFO                  = "tbl_UserInfo";         /* 1 用户信息 */
     String TABLE_SCHOOL_ROLL_INFO           = "tbl_SchoolRollInfo";   /* 2 学籍信息 */
     String TABLE_SCHOOL_INFO                = "tbl_SchoolInfo";       /* 3 学校信息 */
@@ -23,18 +23,7 @@ public interface Constants {
     String TABLE_HOT_SPOT_COMMENT_INFO      = "tbl_HotSpotCommentInfo";   /* 18 校园热点评论信息 */
     String TABLE_MIS_INFO                   = "tbl_MISInfo";          /* 19 教务系统信息 */
 
-    /* Id Pool */
-    String PK_TABLE_NAME                    = "pk_TableName";
-    String IDX_MAX_ID                       = "idx_MaxId";
+    //String PK_TABLE_NAME                    = "pk_TableName";
+    //String IDX_MAX_ID                       = "idx_MaxId";
 
-    /* User Info */
-    String PK_USER_ID                       = "pk_UserId";
-    String UK_USERNAME                      = "uk_Username";
-    String IDX_NICKNAME                     = "idx_Nickname";
-    String IDX_PASSWORD                     = "idx_Password";
-    String IDX_EMAIL                        = "idx_Email";
-    String FK_SCHOOL_ROLL_ID                = "fk_SchoolRollId";
-    String IDX_STUDENT_NUMBER               = "idx_StudentNumber";
-    String IDX_SHARE_COURSE                 = "idx_ShareCourse";
-    String IDX_PERMISSION                   = "idx_Permission";
 }
