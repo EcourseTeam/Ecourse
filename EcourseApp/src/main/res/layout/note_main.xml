@@ -6,7 +6,7 @@
     android:paddingTop="5dp"
 
     android:background="@drawable/edit_background"
-    tools:context="es.source.code.activity.es.source.ecourse.activity.NoteMainActivity" >
+    tools:context="com.ecourse.activity.NoteMainActivity" >
 
     <LinearLayout
         android:layout_width="fill_parent"

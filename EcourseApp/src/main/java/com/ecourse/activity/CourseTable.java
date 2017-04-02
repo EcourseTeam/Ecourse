@@ -1,7 +1,5 @@
 package com.ecourse.activity;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Service;
 import android.content.Context;
@@ -11,10 +9,14 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.GestureDetector;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,17 +28,16 @@ import android.widget.TextView;
 
 import es.source.code.activity.R;
 
-public class CourseTable extends Activity {
+public class CourseTable extends AppCompatActivity {
 
     public ListView list[] = new ListView[7];
     private TabHost tabs   = null;
-    private TextView exitButton = null;
-    private TextView setButton = null;
     public static DataBase db;
     public Cursor[] cursor=new Cursor[7];
     public SimpleCursorAdapter adapter;
     private SharedPreferences pre;
 
+    private DrawerLayout mDrawerLayout;
     //定义手势检测器实例
     private GestureDetector detector = null;
     //定义手势动作两点之间的最小距离
@@ -45,11 +46,39 @@ public class CourseTable extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.course_table);
-        ActionBar actionBar = getActionBar();
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        NavigationView navView = (NavigationView)findViewById(R.id.nav_view);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null){
-            actionBar.hide();
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         }
+        navView.setCheckedItem(R.id.nav_info);
+        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item){
+                switch (item.getItemId()){
+                    case R.id.nav_info:
+                        break;
+                    case R.id.nav_course:
+                        break;
+                    case R.id.nav_note:
+                        Intent intent_note = new Intent();
+                        intent_note.setClass(CourseTable.this, NoteMainActivity.class);
+                        startActivity(intent_note);
+                        break;
+                    case R.id.nav_feedback:
+                        break;
+                    case R.id.nav_about:
+                        break;
+                }
+                mDrawerLayout.closeDrawers();
+                return true;
+            }
+        });
         //将该activity加入到MyApplication对象实例容器中
         MyApplication.getInstance().addActivity(this);
 
@@ -64,9 +93,6 @@ public class CourseTable extends Activity {
 //			finish();
         }
 
-
-        exitButton = (TextView)findViewById(R.id.exitButton);
-        setButton = (TextView)findViewById(R.id.setButton);
         list[0] = (ListView)findViewById(R.id.list0);
         list[1] = (ListView)findViewById(R.id.list1);
         list[2] = (ListView)findViewById(R.id.list2);
@@ -112,26 +138,6 @@ public class CourseTable extends Activity {
         //获取手机之前设置好的铃声模式,该数据将用来传递给activity_set
         final int orgRingerMode = audioManager.getRingerMode();
 
-        //为退出按钮绑定监听器
-        exitButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                //创建AlertDialog.Builder对象，该对象是AlterDialog的创建器，AlterDialog用来创建弹出对话框
-                final AlertDialog.Builder builder = new AlertDialog.Builder(CourseTable.this);
-                exit(builder);
-            }
-        });
-        setButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CourseTable.this, More.class);
-                //将orgRingerMode数据传给activity_set
-                intent.putExtra("mode_ringer", orgRingerMode);
-                startActivity(intent);
-            }
-        });
 
 
         for( int day=0;day<7;day++){
@@ -289,26 +295,6 @@ public class CourseTable extends Activity {
     }
 
     //设置菜单按钮
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.activity_main, menu);
-        return true;
-    }
-
-    //当点击菜单中的“退出”键时，弹出提示是否退出的对话框
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        //创建AlertDialog.Builder对象，该对象是AlterDialog的创建器，AlterDialog用来创建弹出对话框
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        if(item.getItemId() == R.id.menu_exit){
-            exit(builder);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-
 
 
     //子 方法:为主界面添加选项卡
@@ -318,32 +304,7 @@ public class CourseTable extends Activity {
         spec.setIndicator(name);
         tabs.addTab(spec);
     }
-    //子方法：用来弹出是否退出程序的对话框，并执行执行是否退出操作
-    public void exit(AlertDialog.Builder builder){
-        //为弹出的对话框设置标题和内容
-        builder.setIcon(R.drawable.ic_launcher2);
-        builder.setTitle("退出程序");
-        builder.setMessage("确定要退出Ecourse么？");
-        //设置左边的按钮为“确定”键，并且其绑定监听器，点击后退出
-        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //退出应用程序，即销毁地所有的activity
-                MyApplication.getInstance().exitApp();
-            }
-        });
-        //设置右边的按钮为“取消”键，并且其绑定监听器，点击后仍然停留在当前界面
-        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-        //创建并显示弹出的对话框
-        builder.create().show();
-    }
     /*
      * 为每一个list提供数据适配器
      */
@@ -370,6 +331,16 @@ public class CourseTable extends Activity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                break;
+            default:
+        }
+        return true;
+    }
 
 
 }

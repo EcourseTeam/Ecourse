@@ -10,7 +10,6 @@ import java.util.Map;
 
 import com.ecourse.structure.Entry;
 import com.ecourse.structure.UserInfo;
-import com.ecourse.util.Constants;
 
 public class OfflineDaoImpl implements OfflineDao {
 
@@ -20,54 +19,58 @@ public class OfflineDaoImpl implements OfflineDao {
         DBHelper helper = new DBHelper(ctx);
         if (db == null) {
             db = helper.getWritableDatabase();
-            db.delete(TABLE_USER_INFO, null, null);
+            db.delete("tbl_UserInfo", null, null);
         }
     }
 
-    public long addEntry(String table, Entry newEntry) {
+    public long addEntry(int table, Entry newEntry) {
         return addEntry(table, newEntry.getContentValues());
     }
 
-    public long addEntry(String table, ContentValues newEntryCV) {
-        Cursor c = db.rawQuery("select " + IDX_MAX_ID + " from " + TABLE_ID_POOL +
-                " where " + PK_TABLE_NAME + " = ?", new String[]{table});
+    public long addEntry(int table, ContentValues newEntryCV) {
+        Cursor c = db.rawQuery("select idx_KeyMax from " + TABLE_ARRAY[TABLE_KEY_POOL] +
+                " where pk_TableName = ?", new String[]{TABLE_ARRAY[table]});
         c.moveToNext();
-        //Log.i("OfflineDaoImpl", "table:" + table);
-        int id = c.getInt(c.getColumnIndex(IDX_MAX_ID));
+        Log.i("OfflineDaoImpl", "table:" + table);
+        int id = c.getInt(c.getColumnIndex("idx_KeyMax"));
         ContentValues cv = new ContentValues();
-        cv.put(PK_TABLE_NAME, table);
-        cv.put(IDX_MAX_ID, ++id);
+        cv.put("pk_TableName", TABLE_ARRAY[table]);
+        cv.put("idx_KeyMax", ++id);
         //Log.i("OfflineDaoImpl", "id:" + id);
         ContentValues filter = new ContentValues();
-        filter.put(PK_TABLE_NAME, table);
-        db.update(TABLE_ID_POOL, cv, whereClause(filter), whereArgs(filter));
+        filter.put("pk_TableName", TABLE_ARRAY[table]);
+        db.update(TABLE_ARRAY[TABLE_KEY_POOL], cv, whereClause(filter), whereArgs(filter));
         newEntryCV.put(findPrimaryKeyName(newEntryCV), id);
-        return db.insert(table, null, newEntryCV);
+        return db.insert(TABLE_ARRAY[table], null, newEntryCV);
     }
 
-    public int updateEntries(String table, ContentValues filter, Entry newEntry) {
-        return db.update(table, newEntry.getContentValues(), whereClause(filter), whereArgs(filter));
+    public int updateEntries(int table, ContentValues filter, Entry newEntry) {
+        return db.update(TABLE_ARRAY[table], newEntry.getContentValues(), whereClause(filter), whereArgs(filter));
     }
 
-    public int updateEntries(String table, ContentValues filter, ContentValues newEntryCV) {
-        return db.update(table, newEntryCV, whereClause(filter), whereArgs(filter));
+    public int updateEntries(int table, ContentValues filter, ContentValues newEntryCV) {
+        return db.update(TABLE_ARRAY[table], newEntryCV, whereClause(filter), whereArgs(filter));
     }
 
-    public int deleteEntries(String table, ContentValues filter) {
-        return db.delete(table, whereClause(filter), whereArgs(filter));
+    public int deleteEntries(int table, ContentValues filter) {
+        return db.delete(TABLE_ARRAY[table], whereClause(filter), whereArgs(filter));
     }
 
-    public Entry[] getEntries(String table) {
+    public Entry[] getEntries(int table) {
         return getEntries(table, null);
     }
 
-    public Entry[] getEntries(String table, ContentValues filter) {
-        String sql = "select * from " + table;
+    public Entry[] getEntries(int table, ContentValues filter) {
+        String sql = "select * from " + TABLE_ARRAY[table];
         if (filter == null) {
             return getEntriesFromCursor(table, db.rawQuery(sql, null));
         } else {
             return getEntriesFromCursor(table, db.rawQuery(sql + " where " + whereClause(filter), whereArgs(filter)));
         }
+    }
+
+    public void closeDB() {
+        db.close();
     }
 
     private String findPrimaryKeyName(ContentValues cv) {
@@ -104,7 +107,7 @@ public class OfflineDaoImpl implements OfflineDao {
         return strs;
     }
 
-    private Entry[] getEntriesFromCursor(String table, Cursor c) {
+    private Entry[] getEntriesFromCursor(int table, Cursor c) {
         Entry[] entries;
         int counter = 0;
         switch (table) {
@@ -118,9 +121,5 @@ public class OfflineDaoImpl implements OfflineDao {
             entries[counter++] = new UserInfo(c);
         }
         return entries;
-    }
-
-    public void closeDB() {
-        db.close();
     }
 }
