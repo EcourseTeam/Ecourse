@@ -2,19 +2,16 @@ package com.ecourse.activity;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 
 import java.util.LinkedList;
 import java.util.List;
-
-/**
- * Created by zpf on 2016/10/18.
- */
 
 //MyApplication类用来存储每一个activity，并实现关闭所有activity的操作
 public class MyApplication extends Application {
 
     //定义容activity容器
-    private List<Activity> activityList = new LinkedList<Activity>();
+    private List<Activity> activityList = new LinkedList<>();
     private static MyApplication instance;
 
     private MyApplication(){}
@@ -24,6 +21,7 @@ public class MyApplication extends Application {
             instance = new MyApplication();
         return instance;
     }
+
     //添加activity到容器中
     public void addActivity(Activity activity){
         activityList.add(activity);
