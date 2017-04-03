@@ -4,8 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Ecourse.iml" filepath="$PROJECT_DIR$/Ecourse.iml" />
       <module fileurl="file://$PROJECT_DIR$/EcourseApp/EcourseApp.iml" filepath="$PROJECT_DIR$/EcourseApp/EcourseApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/EcourseApp.iml" filepath="$PROJECT_DIR$/EcourseApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/EcourseApp/EcourseApp-EcourseApp.iml" filepath="$PROJECT_DIR$/EcourseApp/EcourseApp-EcourseApp.iml" />
     </modules>
   </component>
 </project>
