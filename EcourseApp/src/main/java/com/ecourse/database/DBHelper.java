@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.util.Log;
 
+import com.ecourse.structure.MemoInfo;
 import com.ecourse.structure.UserInfo;
 import com.ecourse.util.Constants;
 
@@ -34,23 +35,7 @@ class DBHelper extends SQLiteOpenHelper implements Constants {
     //当数据库创建的时候调用
     public void onCreate(SQLiteDatabase db) {
         Log.i(tag, "Create Table!");
-//        db.execSQL("create table " + TABLE_ID_POOL + "(" +
-//                PK_TABLE_NAME + " varchar(32) primary key," +
-//                IDX_MAX_ID + " int)");
-//        Log.i(tag, TABLE_ID_POOL + " created!");
-        /* UserInfo */
-//        db.execSQL("create table " + TABLE_USER_INFO + "(" +
-//                "pk_UserId int primary key," +
-//                "uk_Username varchar(32)," +
-//                "idx_Nickname text," +
-//                "idx_Password varchar(32)," +
-//                "idx_Email varchar(64)," +
-//                "fk_SchoolRollId int," +
-//                "idx_StudentNumber varchar(32)," +
-//                "idx_ShareCourse int," +
-//                "idx_Permission int)");
         db.execSQL(UserInfo.createTableSQL());
-        //addIdPool(db, TABLE_USER_INFO);
         Log.i(tag, TABLE_USER_INFO + " created!");
         /* SchoolRollInfo */
         db.execSQL("create table " + TABLE_SCHOOL_ROLL_INFO + "(" +
@@ -132,6 +117,7 @@ class DBHelper extends SQLiteOpenHelper implements Constants {
                 "fk_CoursePeriodId int)");
         //addIdPool(db, TABLE_COURSE_TABLE_ENTRY_INFO);
         Log.i(tag, TABLE_COURSE_TABLE_ENTRY_INFO + " created!");
+        db.execSQL(MemoInfo.createTableSQL());
     }
 
     //版本更新时调用

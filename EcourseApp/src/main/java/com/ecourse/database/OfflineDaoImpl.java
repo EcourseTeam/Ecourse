@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.ecourse.structure.Entry;
+import com.ecourse.structure.SQLEntry;
 import com.ecourse.structure.UserInfo;
 import com.ecourse.util.Constants;
 
@@ -22,7 +22,7 @@ public class OfflineDaoImpl implements OfflineDao, Constants {
         }
     }
 
-    public long addEntry(String table, Entry newEntry) {
+    public long addEntry(String table, SQLEntry newEntry) {
         return addEntry(table, newEntry.getContentValues());
     }
 
@@ -30,7 +30,7 @@ public class OfflineDaoImpl implements OfflineDao, Constants {
         return db.insert(table, null, newEntryCV);
     }
 
-    public int updateEntries(String table, ContentValues filter, Entry newEntry) {
+    public int updateEntries(String table, ContentValues filter, SQLEntry newEntry) {
         return db.update(table, newEntry.getContentValues(), whereClause(filter), whereArgs(filter));
     }
 
@@ -42,11 +42,11 @@ public class OfflineDaoImpl implements OfflineDao, Constants {
         return db.delete(table, whereClause(filter), whereArgs(filter));
     }
 
-    public Entry[] getEntries(String table) {
+    public SQLEntry[] getEntries(String table) {
         return getEntries(table, null);
     }
 
-    public Entry[] getEntries(String table, ContentValues filter) {
+    public SQLEntry[] getEntries(String table, ContentValues filter) {
         String sql = "select * from " + table;
         if (filter == null) {
             return getEntriesFromCursor(table, db.rawQuery(sql, null));
@@ -55,8 +55,8 @@ public class OfflineDaoImpl implements OfflineDao, Constants {
         }
     }
 
-    private Entry[] getEntriesFromCursor(String table, Cursor c) {
-        Entry[] entries;
+    private SQLEntry[] getEntriesFromCursor(String table, Cursor c) {
+        SQLEntry[] entries;
         int counter = 0;
         switch (table) {
             case TABLE_USER_INFO:

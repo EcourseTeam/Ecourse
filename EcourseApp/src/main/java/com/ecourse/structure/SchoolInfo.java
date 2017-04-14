@@ -3,7 +3,7 @@ package com.ecourse.structure;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-public class SchoolInfo implements Entry {
+public class SchoolInfo implements SQLEntry {
 
     public int pk_SchoolId;
     public String uk_SchoolName;

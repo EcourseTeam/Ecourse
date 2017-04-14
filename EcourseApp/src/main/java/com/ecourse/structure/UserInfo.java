@@ -7,7 +7,7 @@ import com.ecourse.util.Constants;
 
 import java.util.Map.Entry;
 
-public class UserInfo implements com.ecourse.structure.Entry, Constants {
+public class UserInfo implements SQLEntry, Constants {
 
     public static final String PK_USER_ID                       = "pk_UserId";
 
@@ -102,15 +102,15 @@ public class UserInfo implements com.ecourse.structure.Entry, Constants {
 
     public static String createTableSQL() {
         return "create table " + TABLE_USER_INFO + "(" +
-                "pk_UserId integer primary key autoincrement," +
-                "uk_Username varchar(32)," +
-                "idx_Nickname text," +
-                "idx_Password varchar(32)," +
-                "idx_Email varchar(64)," +
-                "fk_SchoolRollId int," +
-                "idx_StudentNumber varchar(32)," +
-                "idx_ShareCourse int," +
-                "idx_Permission int)";
+                PK_USER_ID         + " integer primary key autoincrement," +
+                UK_USERNAME        + " varchar(32)," +
+                IDX_NICKNAME       + " text," +
+                IDX_PASSWORD       + " varchar(32)," +
+                IDX_EMAIL          + " varchar(64)," +
+                FK_SCHOOL_ROLL_ID  + " int," +
+                IDX_STUDENT_NUMBER + " varchar(32)," +
+                IDX_SHARE_COURSE   + " int," +
+                IDX_PERMISSION     + " int)";
     }
 
     public boolean checkUsernameAndPassword(String username, String password) {
