@@ -3,7 +3,9 @@ package com.ecourse.structure;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-public class CoursePeriodInfo implements SQLEntry {
+import com.ecourse.util.Constants;
+
+public class CoursePeriodInfo extends SQLEntry implements Constants {
 
     public int pk_CoursePeriodId;
     public int fk_CourseId;
@@ -39,25 +41,4 @@ public class CoursePeriodInfo implements SQLEntry {
         idx_Alarm = c.getInt(c.getColumnIndex("idx_Alarm"));
         idx_Place = c.getString(c.getColumnIndex("idx_Place"));
     }
-
-    public ContentValues getContentValues() {
-        ContentValues cv = new ContentValues();
-        cv.put("pk_CoursePeriodId", pk_CoursePeriodId);
-        cv.put("fk_CourseId", fk_CourseId);
-        cv.put("idx_WeekFrom", idx_WeekFrom);
-        cv.put("idx_WeekTo", idx_WeekTo);
-        cv.put("idx_Week", idx_Week);
-        cv.put("idx_TimeFrom", idx_TimeFrom);
-        cv.put("idx_TimeTo", idx_TimeTo);
-        cv.put("idx_Alarm", idx_Alarm);
-        cv.put("idx_Place", idx_Place);
-        return cv;
-    }
-
-    public String toString() {
-        return pk_CoursePeriodId + ", " + fk_CourseId + ", " + idx_WeekFrom + ", " + idx_WeekTo + ", " +
-                idx_Week + ", " + idx_TimeFrom + ", " + idx_TimeTo + ", " +
-                idx_Alarm + ", " + idx_Place;
-    }
-
 }

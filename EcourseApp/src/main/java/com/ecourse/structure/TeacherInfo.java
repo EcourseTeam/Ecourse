@@ -3,7 +3,9 @@ package com.ecourse.structure;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-public class TeacherInfo implements SQLEntry {
+import com.ecourse.util.Constants;
+
+public class TeacherInfo extends SQLEntry implements Constants {
 
     public int pk_TeacherId;
     public int fk_AcademyId;
@@ -28,21 +30,5 @@ public class TeacherInfo implements SQLEntry {
         idx_OfficePhone = c.getString(c.getColumnIndex("idx_OfficePhone"));
         idx_CellPhone = c.getString(c.getColumnIndex("idx_CellPhone"));
         idx_Email = c.getString(c.getColumnIndex("idx_Email"));
-    }
-
-    public ContentValues getContentValues() {
-        ContentValues cv = new ContentValues();
-        cv.put("pk_TeacherId", pk_TeacherId);
-        cv.put("fk_AcademyId", fk_AcademyId);
-        cv.put("idx_TeacherName", idx_TeacherName);
-        cv.put("idx_OfficePhone", idx_OfficePhone);
-        cv.put("idx_CellPhone", idx_CellPhone);
-        cv.put("idx_Email", idx_Email);
-        return cv;
-    }
-
-    public String toString() {
-        return pk_TeacherId + ", " + fk_AcademyId + ", " + idx_TeacherName + ", " +
-                idx_OfficePhone + ", " + idx_CellPhone + ", " + idx_Email;
     }
 }

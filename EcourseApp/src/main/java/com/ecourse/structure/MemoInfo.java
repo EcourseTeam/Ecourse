@@ -7,7 +7,7 @@ import com.ecourse.util.Constants;
 
 import java.util.Map.Entry;
 
-public class MemoInfo implements SQLEntry, Constants {
+public class MemoInfo extends SQLEntry implements Constants {
 
     public static final String PK_MEMO_ID                       = "pk_MemoId";
 
@@ -15,8 +15,6 @@ public class MemoInfo implements SQLEntry, Constants {
     public static final String FK_COURSE_ID                     = "fk_CourseId";
     public static final String IDX_DEADLINE                     = "idx_Deadline";
     public static final String IDX_CONTENT                      = "idx_Content";
-
-    private ContentValues cv;
 
     public MemoInfo(int userId, int courseId,
                     int deadline, String content) {
@@ -34,18 +32,6 @@ public class MemoInfo implements SQLEntry, Constants {
         cv.put(FK_COURSE_ID, c.getInt(c.getColumnIndex(FK_COURSE_ID)));
         cv.put(IDX_DEADLINE, c.getInt(c.getColumnIndex(IDX_DEADLINE)));
         cv.put(IDX_CONTENT , c.getString(c.getColumnIndex(IDX_CONTENT)));
-    }
-
-    public ContentValues getContentValues() {
-        return cv;
-    }
-
-    public String toString() {
-        String str = "";
-        for (Entry<String, Object> item : cv.valueSet()) {
-            str += item.getKey() + ": " + item.getValue().toString() + ",\n";
-        }
-        return str;
     }
 
     public static String createTableSQL() {

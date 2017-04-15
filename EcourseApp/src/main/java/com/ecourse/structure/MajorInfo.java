@@ -3,7 +3,9 @@ package com.ecourse.structure;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-public class MajorInfo implements SQLEntry {
+import com.ecourse.util.Constants;
+
+public class MajorInfo extends SQLEntry implements Constants {
 
     public int pk_MajorId;
     public int fk_AcademyId;
@@ -27,21 +29,5 @@ public class MajorInfo implements SQLEntry {
         idx_Education = c.getString(c.getColumnIndex("idx_Education"));
         idx_Semester = c.getInt(c.getColumnIndex("idx_Semester"));
         idx_Week = c.getInt(c.getColumnIndex("idx_Week"));
-    }
-
-    public ContentValues getContentValues() {
-        ContentValues cv = new ContentValues();
-        cv.put("pk_MajorId", pk_MajorId);
-        cv.put("fk_AcademyId", fk_AcademyId);
-        cv.put("idx_MajorName", idx_MajorName);
-        cv.put("idx_Education", idx_Education);
-        cv.put("idx_Semester", idx_Semester);
-        cv.put("idx_Week", idx_Week);
-        return cv;
-    }
-
-    public String toString() {
-        return pk_MajorId + ", " + fk_AcademyId + ", " + idx_MajorName + ", " +
-                idx_Education + ", " + idx_Semester + ", " + idx_Week;
     }
 }

@@ -3,7 +3,9 @@ package com.ecourse.structure;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-public class SchoolRollInfo implements SQLEntry {
+import com.ecourse.util.Constants;
+
+public class SchoolRollInfo extends SQLEntry implements Constants {
 
     public int pk_SchoolRollId;
     public int fk_SchoolId;
@@ -18,18 +20,6 @@ public class SchoolRollInfo implements SQLEntry {
         pk_SchoolRollId = c.getInt(c.getColumnIndex("pk_SchoolRollId"));
         fk_SchoolId = c.getInt(c.getColumnIndex("fk_SchoolId"));
         fk_MajorId = c.getInt(c.getColumnIndex("fk_MajorId"));
-    }
-
-    public ContentValues getContentValues() {
-        ContentValues cv = new ContentValues();
-        cv.put("pk_SchoolRollId", pk_SchoolRollId);
-        cv.put("fk_SchoolId", fk_SchoolId);
-        cv.put("fk_MajorId", fk_MajorId);
-        return cv;
-    }
-
-    public String toString() {
-        return pk_SchoolRollId + ", " + fk_SchoolId + ", " + fk_MajorId;
     }
 
 }

@@ -3,7 +3,9 @@ package com.ecourse.structure;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-public class CourseInfo implements SQLEntry {
+import com.ecourse.util.Constants;
+
+public class CourseInfo extends SQLEntry implements Constants {
 
     public int pk_CourseId;
     public int fk_AcademyId;
@@ -39,25 +41,4 @@ public class CourseInfo implements SQLEntry {
         idx_CourseHours = c.getInt(c.getColumnIndex("idx_CourseHours"));
         idx_Materials = c.getString(c.getColumnIndex("idx_Materials"));
     }
-
-    public ContentValues getContentValues() {
-        ContentValues cv = new ContentValues();
-        cv.put("pk_CourseId", pk_CourseId);
-        cv.put("fk_AcademyId", fk_AcademyId);
-        cv.put("idx_CourseName", idx_CourseName);
-        cv.put("idx_CourseShortName", idx_CourseShortName);
-        cv.put("idx_CourseNumber", idx_CourseNumber);
-        cv.put("fk_TeacherId", fk_TeacherId);
-        cv.put("idx_Semester", idx_Semester);
-        cv.put("idx_CourseHours", idx_CourseHours);
-        cv.put("idx_Materials", idx_Materials);
-        return cv;
-    }
-
-    public String toString() {
-        return pk_CourseId + ", " + fk_AcademyId + ", " + idx_CourseName + ", " +
-                idx_CourseShortName + ", " + idx_CourseNumber + ", " + fk_TeacherId + ", " +
-                idx_Semester + ", " + idx_CourseHours + ", " + idx_Materials;
-    }
-
 }
