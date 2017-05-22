@@ -30,7 +30,7 @@
                     android:id="@android:id/tabs"
                     android:background="@drawable/tab_bar"
                     android:layout_width="match_parent"
-                    android:layout_height="50dip"
+                    android:layout_height="wrap_content"
                     android:paddingLeft="30dp"/>
                 <FrameLayout
                     android:id="@android:id/tabcontent"

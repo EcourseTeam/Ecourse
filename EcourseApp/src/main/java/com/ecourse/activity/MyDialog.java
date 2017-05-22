@@ -82,7 +82,9 @@ public class MyDialog {
                         if(!(s1=course_name.getText().toString()).equals("")) s1=s1;
                         if(!(s2=course_address.getText().toString()).equals("")) s2=s2;
                         if(!(s3=course_teacher.getText().toString()).equals("")) s3=s3;
-
+                        if(!(s4=course_week.getText().toString()).equals("")) s4=s4;
+                        if(!(s6=course_time1.getText().toString()).equals("")) s6=s6;
+                        if(!(s7=course_time2.getText().toString()).equals("")) ;
 
                         if((s5=course_count.getText().toString()).equals("")||s1.equals("")) {
                             Toast.makeText(context, "请正确输入课程及节数！", Toast.LENGTH_SHORT).show();
@@ -145,11 +147,11 @@ public class MyDialog {
         String [] temp=new String[8];
         for(int i=0;i<8;i++) {temp[i]=main.cursor[day].getString(i+1);}
         //将旧数据显示在编辑对话框
-        if(!temp[0].equals("")) course_name.setText(temp[0].substring(temp[0].indexOf(":")+2));
-        if(!temp[1].equals("")) course_address.setText(temp[1].substring(temp[1].indexOf(":")+2));
-        if(!temp[2].equals("")) course_teacher.setText(temp[2].substring(temp[2].indexOf(":")+2));
-        if(!temp[3].equals("")) course_week.setText(temp[3].substring(temp[3].indexOf(":")+2));
-        if(!temp[4].equals("")) course_time1.setText(temp[4].substring(temp[4].indexOf(":")+2));
+        if(!temp[0].equals("")) course_name.setText(temp[0].substring(temp[0].indexOf(":")+1));
+        if(!temp[1].equals("")) course_address.setText(temp[1].substring(temp[1].indexOf(":")+1));
+        if(!temp[2].equals("")) course_teacher.setText(temp[2].substring(temp[2].indexOf(":")+1));
+        if(!temp[3].equals("")) course_week.setText(temp[3].substring(temp[3].indexOf(":")+1));
+        if(!temp[4].equals("")) course_time1.setText(temp[4].substring(temp[4].indexOf(":")+1));
         course_time2.setText(temp[5]);
         course_count.setText(temp[6]);
         view.invalidate();

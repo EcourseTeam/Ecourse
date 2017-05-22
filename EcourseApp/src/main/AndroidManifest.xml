@@ -6,14 +6,15 @@
         android:minSdkVersion="15"
         android:targetSdkVersion="22" />
 
-    <!--&lt;!&ndash; 授予程序访问振动器的权限 &ndash;&gt;-->
-    <!--<uses-permission android:name="android.permission.VIBRATE" />-->
-    <!--&lt;!&ndash; 授予程序访问系统开机事件的权限 &ndash;&gt;-->
-    <!--<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />-->
-    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
-    <!--<uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
-    <!--<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- &lt;!&ndash; 授予程序访问振动器的权限 &ndash;&gt; -->
+    <!-- <uses-permission android:name="android.permission.VIBRATE" /> -->
+    <!-- &lt;!&ndash; 授予程序访问系统开机事件的权限 &ndash;&gt; -->
+    <!-- <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> -->
+    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
+    <!-- <uses-permission android:name="android.permission.READ_PHONE_STATE" /> -->
+    <!-- <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -26,10 +27,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name="com.ecourse.activity.CourseTable">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,13 +41,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name="com.ecourse.activity.Login" />
         <activity android:name="com.ecourse.activity.NoteMainActivity" />
         <activity android:name="com.ecourse.activity.AddContent" />
         <activity android:name="com.ecourse.activity.SelectAct" />
-        <activity android:name="com.ecourse.activity.More"></activity>
+        <activity android:name="com.ecourse.activity.More" />
     </application>
 
 </manifest>
