@@ -54,7 +54,7 @@ public class UserInfo extends SQLEntry implements Constants {
                 IDX_NICKNAME       + " text," +
                 IDX_PASSWORD       + " varchar(32)," +
                 IDX_EMAIL          + " varchar(64)," +
-                FK_SCHOOL_ROLL_ID  + " int," +
+                FK_SCHOOL_ROLL_ID  + " integer," +
                 IDX_STUDENT_NUMBER + " varchar(32)," +
                 IDX_SHARE_COURSE   + " int," +
                 IDX_PERMISSION     + " int)";

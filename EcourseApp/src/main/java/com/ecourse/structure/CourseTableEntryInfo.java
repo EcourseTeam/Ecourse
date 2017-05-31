@@ -7,18 +7,28 @@ import com.ecourse.util.Constants;
 
 public class CourseTableEntryInfo extends SQLEntry implements Constants {
 
-    public int pk_CourseTableEntryId;
-    public int fk_CourseTableId;
-    public int fk_CoursePeriodId;
+    public static final String PK_COURSE_TABLE_ENTRY_ID         = "pk_CourseTableEntryId";
+
+    public static final String FK_COURSE_TABLE_ID               = "fk_CourseTableId";
+    public static final String FK_COURSE_PERIOD_ID              = "fk_CoursePeriodId";
 
     public CourseTableEntryInfo(int courseTableId, int coursePeriodId) {
-        fk_CourseTableId = courseTableId;
-        fk_CoursePeriodId = coursePeriodId;
+        cv = new ContentValues();
+        cv.put(FK_COURSE_TABLE_ID , courseTableId);
+        cv.put(FK_COURSE_PERIOD_ID, coursePeriodId);
     }
 
     public CourseTableEntryInfo(Cursor c) {
-        pk_CourseTableEntryId = c.getInt(c.getColumnIndex("pk_CourseTableEntryId"));
-        fk_CourseTableId = c.getInt(c.getColumnIndex("fk_CourseTableId"));
-        fk_CoursePeriodId = c.getInt(c.getColumnIndex("fk_CoursePeriodId"));
+        cv = new ContentValues();
+        cv.put(PK_COURSE_TABLE_ENTRY_ID, c.getInt(c.getColumnIndex(PK_COURSE_TABLE_ENTRY_ID)));
+        cv.put(FK_COURSE_TABLE_ID      , c.getInt(c.getColumnIndex(FK_COURSE_TABLE_ID)));
+        cv.put(FK_COURSE_PERIOD_ID     , c.getInt(c.getColumnIndex(FK_COURSE_PERIOD_ID)));
+    }
+
+    public static String createTableSQL() {
+        return "create table " + TABLE_COURSE_TABLE_ENTRY_INFO + "(" +
+                PK_COURSE_TABLE_ENTRY_ID + " integer primary key autoincrement," +
+                FK_COURSE_TABLE_ID       + " integer," +
+                FK_COURSE_PERIOD_ID      + " integer)";
     }
 }

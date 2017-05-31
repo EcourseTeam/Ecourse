@@ -7,38 +7,54 @@ import com.ecourse.util.Constants;
 
 public class CoursePeriodInfo extends SQLEntry implements Constants {
 
-    public int pk_CoursePeriodId;
-    public int fk_CourseId;
-    public int idx_WeekFrom;
-    public int idx_WeekTo;
-    public int idx_Week;
-    public int idx_TimeFrom;
-    public int idx_TimeTo;
-    public int idx_Alarm;
-    public String idx_Place;
+    public static final String PK_COURSE_PERIOD_ID              = "pk_CoursePeriodId";
+
+    public static final String FK_COURSE_ID                     = "fk_CourseId";
+    public static final String IDX_WEEK_FROM                    = "idx_WeekFrom";
+    public static final String IDX_WEEK_TO                      = "idx_WeekTo";
+    public static final String IDX_WEEK                         = "idx_Week";
+    public static final String IDX_TIME_FROM                    = "idx_TimeFrom";
+    public static final String IDX_TIME_TO                      = "idx_TimeTo";
+    public static final String IDX_ALARM                        = "idx_Alarm";
+    public static final String IDX_PLACE                        = "idx_Place";
 
     public CoursePeriodInfo(int courseId, int weekFrom, int weekTo, int week,
                             int timeFrom, int timeTo, int alarm,
                             String place) {
-        fk_CourseId = courseId;
-        idx_WeekFrom = weekFrom;
-        idx_WeekTo = weekTo;
-        idx_Week = week;
-        idx_TimeFrom = timeFrom;
-        idx_TimeTo = timeTo;
-        idx_Alarm = alarm;
-        idx_Place = place;
+        cv = new ContentValues();
+        cv.put(FK_COURSE_ID , courseId);
+        cv.put(IDX_WEEK_FROM, weekFrom);
+        cv.put(IDX_WEEK_TO  , weekTo);
+        cv.put(IDX_WEEK     , week);
+        cv.put(IDX_TIME_FROM, timeFrom);
+        cv.put(IDX_TIME_TO  , timeTo);
+        cv.put(IDX_ALARM    , alarm);
+        cv.put(IDX_PLACE    , place);
     }
 
     public CoursePeriodInfo(Cursor c) {
-        pk_CoursePeriodId = c.getInt(c.getColumnIndex("pk_CoursePeriodId"));
-        fk_CourseId = c.getInt(c.getColumnIndex("fk_CourseId"));
-        idx_WeekFrom = c.getInt(c.getColumnIndex("idx_WeekFrom"));
-        idx_WeekTo = c.getInt(c.getColumnIndex("idx_WeekTo"));
-        idx_Week = c.getInt(c.getColumnIndex("idx_Week"));
-        idx_TimeFrom = c.getInt(c.getColumnIndex("idx_TimeFrom"));
-        idx_TimeTo = c.getInt(c.getColumnIndex("idx_TimeTo"));
-        idx_Alarm = c.getInt(c.getColumnIndex("idx_Alarm"));
-        idx_Place = c.getString(c.getColumnIndex("idx_Place"));
+        cv = new ContentValues();
+        cv.put(PK_COURSE_PERIOD_ID, c.getInt(c.getColumnIndex(PK_COURSE_PERIOD_ID)));
+        cv.put(FK_COURSE_ID , c.getInt(c.getColumnIndex(FK_COURSE_ID)));
+        cv.put(IDX_WEEK_FROM, c.getInt(c.getColumnIndex(IDX_WEEK_FROM)));
+        cv.put(IDX_WEEK_TO  , c.getInt(c.getColumnIndex(IDX_WEEK_TO)));
+        cv.put(IDX_WEEK     , c.getInt(c.getColumnIndex(IDX_WEEK)));
+        cv.put(IDX_TIME_FROM, c.getInt(c.getColumnIndex(IDX_TIME_FROM)));
+        cv.put(IDX_TIME_TO  , c.getInt(c.getColumnIndex(IDX_TIME_TO)));
+        cv.put(IDX_ALARM    , c.getInt(c.getColumnIndex(IDX_ALARM)));
+        cv.put(IDX_PLACE    , c.getString(c.getColumnIndex(IDX_PLACE)));
+    }
+
+    public static String createTableSQL() {
+        return "create table " + TABLE_COURSE_PERIOD_INFO + "(" +
+                PK_COURSE_PERIOD_ID + " integer primary key autoincrement," +
+                FK_COURSE_ID  + " integer," +
+                IDX_WEEK_FROM + " int," +
+                IDX_WEEK_TO   + " int," +
+                IDX_WEEK      + " int," +
+                IDX_TIME_FROM + " int," +
+                IDX_TIME_TO   + " int," +
+                IDX_ALARM     + " int," +
+                IDX_PLACE     + " text)";
     }
 }
