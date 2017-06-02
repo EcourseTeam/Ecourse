@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:background="@drawable/top_bar_middle"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingRight="2dip" >
+
+        <TextView
+            android:id="@+id/back_about"
+            android:layout_width="60dip"
+            android:layout_height="35dip"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/top_bar_back"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dip"
+            android:text="@string/back"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" >
+        </TextView>
+
+        <TextView
+            android:layout_width="80dip"
+            android:layout_height="50dip"
+            android:layout_gravity="center_vertical|center"
+            android:gravity="center"
+            android:text="@string/about"
+            android:textColor="#000000"
+            android:textSize="19sp" >
+        </TextView>
+    </FrameLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"
+        android:paddingBottom="10dp"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/teamimage"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:src="@drawable/team"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/teamimage"
+            android:text="工程实践Ecourse项目组.............."
+            android:textSize="18dp"/>
+        <TextView
+            android:id="@+id/appname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/version"
+            android:text="Ecourse课程表"
+            android:textSize="20dp"/>
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/QQnumber"
+            android:text="Version: 1.0"
+            android:textSize="12dp"/>
+        <TextView
+            android:id="@+id/QQnumber"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/copyright"
+            android:text="客服QQ: 395649703"
+            android:textSize="12dp"/>
+        <TextView
+            android:id="@+id/copyright"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:text="Powered by Ecourse team"
+            android:textSize="12dp"/>
+
+    </RelativeLayout>
+</LinearLayout>

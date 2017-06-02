@@ -71,8 +71,14 @@ public class CourseTable extends AppCompatActivity {
                         startActivity(intent_note);
                         break;
                     case R.id.nav_feedback:
+                        Intent intent_feedback = new Intent();
+                        intent_feedback.setClass(CourseTable.this, Feedback.class);
+                        startActivity(intent_feedback);
                         break;
                     case R.id.nav_about:
+                        Intent intent_about = new Intent();
+                        intent_about.setClass(CourseTable.this, About.class);
+                        startActivity(intent_about);
                         break;
                 }
                 mDrawerLayout.closeDrawers();
