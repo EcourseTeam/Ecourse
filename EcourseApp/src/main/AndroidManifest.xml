@@ -9,8 +9,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -33,18 +32,15 @@
             </intent-filter>
         </activity>
         <activity android:name="com.ecourse.activity.Register">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name="com.ecourse.activity.Login" />
         <activity android:name="com.ecourse.activity.NoteMainActivity" />
         <activity android:name="com.ecourse.activity.AddContent" />
         <activity android:name="com.ecourse.activity.SelectAct" />
         <activity android:name="com.ecourse.activity.About" />
-        <activity android:name="com.ecourse.activity.Feedback"></activity>
+        <activity android:name="com.ecourse.activity.Feedback" />
+        <activity android:name="com.ecourse.activity.AddCoursesActivity"></activity>
     </application>
 
 </manifest>

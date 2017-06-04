@@ -63,8 +63,6 @@ public class CourseTable extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.nav_info:
                         break;
-                    case R.id.nav_course:
-                        break;
                     case R.id.nav_note:
                         Intent intent_note = new Intent();
                         intent_note.setClass(CourseTable.this, NoteMainActivity.class);
@@ -178,11 +176,15 @@ public class CourseTable extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 //如果单击了该列表项，则跳转到编辑课程信息的界面
                                 if(which == 0){
-                                    new MyDialog(CourseTable.this).add(currentDay,n);
+//                                    new MyDialog(CourseTable.this).add(currentDay,n);
+                                    Intent intent = new Intent();
+                                    intent.setClass(CourseTable.this, AddCoursesActivity.class);
+                                    startActivity(intent);
                                 }
                             }
                         });
                         builder.create().show();
+
                     }
                     //否则启动修改对话框，或直接删除数据
                     else{

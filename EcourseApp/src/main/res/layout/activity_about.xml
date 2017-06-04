@@ -12,18 +12,13 @@
         android:orientation="horizontal"
         android:paddingRight="2dip" >
 
-        <TextView
+        <ImageView
             android:id="@+id/back_about"
-            android:layout_width="60dip"
-            android:layout_height="35dip"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/top_bar_back"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dip"
-            android:text="@string/back"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" >
-        </TextView>
+            android:layout_alignParentLeft="true"
+            android:layout_margin="10dp"
+            android:src="@drawable/back"
+            android:layout_width="32dp"
+            android:layout_height="32dp" />
 
         <TextView
             android:layout_width="80dip"

@@ -3,12 +3,7 @@
     <string name="cancle">取消</string>
     <string name="finish">完成</string>
     <string name="app_name">Ecourse</string>
-    <!--<string name="more_settings">更多</string>-->
-    <!--<string name="more">更多</string>-->
     <string name="note">小本子</string>
-    <!--<string name="moreuse">更多功能</string>-->
-    <!--<string name="about_app">软件相关</string>-->
-    <!--<string name="revision">版本更新</string>-->
     <string name="feedback">反馈</string>
     <string name="about">关于</string>
     <string name="heading">课表信息</string>
@@ -28,8 +23,8 @@
     <string name="input_course_jieshu">总节数不超过4</string>
     <string name="to">至</string>
     <string name="jieshulimit">1 2 3 4</string>
+    <string name="add_course_title">添加课程</string>
+    <string name="add_course_searchhint">输入课程名称，可搜索并且添加课程</string>
+    <string name="add_course_coursemannually">手动创建课程</string>
 
-    <!--<string name="navigation_drawer_open">Open navigation drawer</string>-->
-    <!--<string name="navigation_drawer_close">Close navigation drawer</string>-->
-    <!--<string name="action_settings">Settings</string>-->
 </resources>

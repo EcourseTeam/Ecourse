@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * Created by zpf on 2016/10/16.
@@ -50,6 +51,13 @@ public class DataBase extends SQLiteOpenHelper{
 
         SQLiteDatabase db=DataBase.this.getReadableDatabase();
         Cursor cursor=db.query(TB_NAME[i],null,null,null,null,null,null);
+        return cursor;
+    }
+    //根据指定数据库名称获取数据
+    public Cursor select(String dbName){
+
+        SQLiteDatabase db=DataBase.this.getReadableDatabase();
+        Cursor cursor=db.query(dbName,null,null,null,null,null,null);
         return cursor;
     }
     public  long insert(int i,String cla,String loca,String tea,String zhou,String jie,String time1,String time2,String which){
@@ -106,6 +114,21 @@ public class DataBase extends SQLiteOpenHelper{
 
         for(int i=1;i<=12;i++)
             insert(j,"", "", "","","","","","");
+
+    }
+    public void getAllCourses(){
+        SQLiteDatabase db=this.getWritableDatabase();
+        for(int i=0;i<7;i++) {
+            Cursor c=db.query(TB_NAME[i],null,null,null,null,null,null);
+            if(c.moveToFirst()){
+//              String[] columnNames = c.getColumnNames();
+//              for(String name : columnNames) {
+//                  Log.d("names",name);
+//              }
+                Log.d("classes:",c.getString(1));
+                c.moveToNext();
+            }
+        }
 
     }
 

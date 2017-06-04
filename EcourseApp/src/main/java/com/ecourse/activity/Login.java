@@ -10,16 +10,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import es.source.code.activity.R;
 import com.ecourse.database.UserInfoDao;
 import com.ecourse.structure.UserInfo;
+
+import es.source.code.activity.R;
 
 public class Login extends Activity {
     private EditText username;
     private EditText password;
     private Button button_ok;
     private Button button_back;
-//    private OfflineDao offlineDao;
+    //    private OfflineDao offlineDao;
     private UserInfoDao userInfoDao;
     public Context context = this;
 
@@ -44,10 +45,6 @@ public class Login extends Activity {
 
                 ContentValues filter = new ContentValues();
                 UserInfo userInfo = userInfoDao.get(str1);
-//                filter.put("uk_Username", str1);
-//                filter.put("idx_Password", str2);
-//                UserInfo[] entries = (UserInfo[])offlineDao.getEntries(OfflineDao.TABLE_USER_INFO);
-                //Log.i("test", entries[0].toString());
 
                 if (userInfoDao.check(str1, str2)){
                     Intent intent = new Intent();
@@ -73,7 +70,7 @@ public class Login extends Activity {
 //                    bundle.putInt("isFromBack",isFromBack);
 //                    intent.putExtras(bundle);
 //                    setResult(result_code2,intent);
-                    finish();
+                finish();
             }
         });
 

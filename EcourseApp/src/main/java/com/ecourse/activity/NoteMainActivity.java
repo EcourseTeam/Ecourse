@@ -17,7 +17,7 @@ public class NoteMainActivity extends Activity implements View.OnClickListener {
     private Button textbtn, imgbtn, videobtn;
     private ListView lv;
     private Intent i;
-    private MyAdapter2 adapter;
+    private NoteAdapter adapter;
     private NotesDB notesDB;
     private SQLiteDatabase dbReader;
     private Cursor cursor;
@@ -85,7 +85,7 @@ public class NoteMainActivity extends Activity implements View.OnClickListener {
     public void selectDB() {
         cursor = dbReader.query(NotesDB.TABLE_NAME, null, null, null, null,
                 null, null);
-        adapter = new MyAdapter2(this, cursor);
+        adapter = new NoteAdapter(this, cursor);
         lv.setAdapter(adapter);
     }
 

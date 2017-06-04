@@ -20,13 +20,13 @@ import es.source.code.activity.R;
  * Created by zpf on 2017/3/9.
  */
 
-public class MyAdapter2 extends BaseAdapter {
+public class NoteAdapter extends BaseAdapter {
 
     private Context context;
     private Cursor cursor;
     private LinearLayout layout;
 
-    public MyAdapter2(Context context, Cursor cursor) {
+    public NoteAdapter(Context context, Cursor cursor) {
         this.context = context;
         this.cursor = cursor;
     }

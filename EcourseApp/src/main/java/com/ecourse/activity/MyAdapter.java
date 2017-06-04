@@ -22,10 +22,5 @@ public class MyAdapter {
         this.context=context;
         main=(CourseTable) context;
     }
-    public void test(){
-
-
-
-    }
 
 }
