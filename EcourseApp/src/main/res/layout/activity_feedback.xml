@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ecourse.activity.Feedback">
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="50dip"
+    android:background="@drawable/top_bar_middle"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingRight="2dip" >
+
+    <TextView
+        android:id="@+id/back_about"
+        android:layout_width="60dip"
+        android:layout_height="35dip"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/top_bar_back"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dip"
+        android:text="@string/back"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp" >
+    </TextView>
+
+    <TextView
+        android:layout_width="80dip"
+        android:layout_height="50dip"
+        android:layout_gravity="center_vertical|center"
+        android:gravity="center"
+        android:text="@string/feedback"
+        android:textColor="#000000"
+        android:textSize="19sp" >
+    </TextView>
+</FrameLayout>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/email_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/emaillogo"/>
+
+</RelativeLayout>
+</LinearLayout>
