@@ -5,6 +5,9 @@ import android.database.Cursor;
 
 import com.ecourse.util.Constants;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Map.Entry;
 
 public class MemoInfo extends SQLEntry implements Constants {
@@ -32,6 +35,15 @@ public class MemoInfo extends SQLEntry implements Constants {
         cv.put(FK_COURSE_ID, c.getInt(c.getColumnIndex(FK_COURSE_ID)));
         cv.put(IDX_DEADLINE, c.getInt(c.getColumnIndex(IDX_DEADLINE)));
         cv.put(IDX_CONTENT , c.getString(c.getColumnIndex(IDX_CONTENT)));
+    }
+
+    public MemoInfo(JSONObject json) throws JSONException {
+        cv = new ContentValues();
+        cv.put(PK_MEMO_ID  , json.getInt(PK_MEMO_ID));
+        cv.put(FK_USER_ID  , json.getInt(FK_USER_ID));
+        cv.put(FK_COURSE_ID, json.getInt(FK_COURSE_ID));
+        cv.put(IDX_DEADLINE, json.getInt(IDX_DEADLINE));
+        cv.put(IDX_CONTENT , json.getString(IDX_CONTENT));
     }
 
     public static String createTableSQL() {

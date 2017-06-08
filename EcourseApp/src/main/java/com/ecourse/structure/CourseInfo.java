@@ -5,6 +5,9 @@ import android.database.Cursor;
 
 import com.ecourse.util.Constants;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class CourseInfo extends SQLEntry implements Constants {
 
     public static final String PK_COURSE_ID                     = "pk_CourseId";
@@ -43,6 +46,19 @@ public class CourseInfo extends SQLEntry implements Constants {
         cv.put(IDX_SEMESTER         , c.getInt(c.getColumnIndex(IDX_SEMESTER)));
         cv.put(IDX_COURSE_HOURS     , c.getInt(c.getColumnIndex(IDX_COURSE_HOURS)));
         cv.put(IDX_MATERIALS        , c.getString(c.getColumnIndex(IDX_MATERIALS)));
+    }
+
+    public CourseInfo(JSONObject json) throws JSONException {
+        cv = new ContentValues();
+        cv.put(PK_COURSE_ID         , json.getInt(PK_COURSE_ID));
+        cv.put(FK_ACADEMY_ID        , json.getInt(FK_ACADEMY_ID));
+        cv.put(IDX_COURSE_NAME      , json.getString(IDX_COURSE_NAME));
+        cv.put(IDX_COURSE_SHORT_NAME, json.getString(IDX_COURSE_SHORT_NAME));
+        cv.put(IDX_COURSE_NUMBER    , json.getString(IDX_COURSE_NUMBER));
+        cv.put(FK_TEACHER_ID        , json.getInt(FK_TEACHER_ID));
+        cv.put(IDX_SEMESTER         , json.getInt(IDX_SEMESTER));
+        cv.put(IDX_COURSE_HOURS     , json.getInt(IDX_COURSE_HOURS));
+        cv.put(IDX_MATERIALS        , json.getString(IDX_MATERIALS));
     }
 
     public static String createTableSQL() {

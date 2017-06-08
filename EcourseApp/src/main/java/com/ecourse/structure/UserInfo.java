@@ -5,6 +5,9 @@ import android.database.Cursor;
 
 import com.ecourse.util.Constants;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Map.Entry;
 
 public class UserInfo extends SQLEntry implements Constants {
@@ -45,6 +48,19 @@ public class UserInfo extends SQLEntry implements Constants {
         cv.put(IDX_STUDENT_NUMBER, c.getString(c.getColumnIndex(IDX_STUDENT_NUMBER)));
         cv.put(IDX_SHARE_COURSE  , c.getInt(c.getColumnIndex(IDX_SHARE_COURSE)));
         cv.put(IDX_PERMISSION    , c.getInt(c.getColumnIndex(IDX_PERMISSION)));
+    }
+
+    public UserInfo(JSONObject json) throws JSONException {
+        cv = new ContentValues();
+        cv.put(PK_USER_ID        , json.getInt(PK_USER_ID));
+        cv.put(UK_USERNAME       , json.getString(UK_USERNAME));
+        cv.put(IDX_NICKNAME      , json.getString(IDX_NICKNAME));
+        cv.put(IDX_PASSWORD      , json.getString(IDX_PASSWORD));
+        cv.put(IDX_EMAIL         , json.getString(IDX_EMAIL));
+        cv.put(FK_SCHOOL_ROLL_ID , json.getInt(FK_SCHOOL_ROLL_ID));
+        cv.put(IDX_STUDENT_NUMBER, json.getString(IDX_STUDENT_NUMBER));
+        cv.put(IDX_SHARE_COURSE  , json.getInt(IDX_SHARE_COURSE));
+        cv.put(IDX_PERMISSION    , json.getInt(IDX_PERMISSION));
     }
 
     public static String createTableSQL() {

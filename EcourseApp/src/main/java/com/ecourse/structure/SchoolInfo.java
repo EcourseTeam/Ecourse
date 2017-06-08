@@ -5,6 +5,9 @@ import android.database.Cursor;
 
 import com.ecourse.util.Constants;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class SchoolInfo extends SQLEntry implements Constants {
 
     public static final String PK_SCHOOL_ID                     = "pk_SchoolId";
@@ -20,6 +23,12 @@ public class SchoolInfo extends SQLEntry implements Constants {
         cv = new ContentValues();
         cv.put(PK_SCHOOL_ID        , c.getInt(c.getColumnIndex(PK_SCHOOL_ID)));
         cv.put(UK_SCHOOL_NAME      , c.getString(c.getColumnIndex(UK_SCHOOL_NAME)));
+    }
+
+    public SchoolInfo(JSONObject json) throws JSONException {
+        cv = new ContentValues();
+        cv.put(PK_SCHOOL_ID        , json.getInt(PK_SCHOOL_ID));
+        cv.put(UK_SCHOOL_NAME      , json.getString(UK_SCHOOL_NAME));
     }
 
     public static String createTableSQL() {
