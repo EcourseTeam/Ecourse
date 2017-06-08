@@ -26,4 +26,8 @@ public interface Constants {
     //String PK_TABLE_NAME                    = "pk_TableName";
     //String IDX_MAX_ID                       = "idx_MaxId";
 
+    String SQL_REQUEST_INSERT = "insert";
+    String SQL_REQUEST_UPDATE = "update";
+    String SQL_REQUEST_DELETE = "delete";
+    String SQL_REQUEST_SELECT = "select";
 }
