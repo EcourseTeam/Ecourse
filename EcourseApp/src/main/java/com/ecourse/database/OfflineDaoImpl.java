@@ -5,7 +5,17 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.ecourse.structure.AcademyInfo;
+import com.ecourse.structure.CourseInfo;
+import com.ecourse.structure.CoursePeriodInfo;
+import com.ecourse.structure.CourseTableEntryInfo;
+import com.ecourse.structure.CourseTableInfo;
+import com.ecourse.structure.MajorInfo;
+import com.ecourse.structure.MemoInfo;
 import com.ecourse.structure.SQLEntry;
+import com.ecourse.structure.SchoolInfo;
+import com.ecourse.structure.SchoolRollInfo;
+import com.ecourse.structure.TeacherInfo;
 import com.ecourse.structure.UserInfo;
 import com.ecourse.util.Constants;
 
@@ -61,12 +71,72 @@ public class OfflineDaoImpl implements OfflineDao, Constants {
         switch (table) {
             case TABLE_USER_INFO:
                 entries = new UserInfo[c.getCount()];
+                while (c.moveToNext()) {
+                    entries[counter++] = new UserInfo(c);
+                }
+                break;
+            case TABLE_ACADEMY_INFO:
+                entries = new AcademyInfo[c.getCount()];
+                while (c.moveToNext()) {
+                    entries[counter++] = new AcademyInfo(c);
+                }
+                break;
+            case TABLE_COURSE_INFO:
+                entries = new CourseInfo[c.getCount()];
+                while (c.moveToNext()) {
+                    entries[counter++] = new CourseInfo(c);
+                }
+                break;
+            case TABLE_COURSE_PERIOD_INFO:
+                entries = new CoursePeriodInfo[c.getCount()];
+                while (c.moveToNext()) {
+                    entries[counter++] = new CoursePeriodInfo(c);
+                }
+                break;
+            case TABLE_COURSE_TABLE_INFO:
+                entries = new CourseTableInfo[c.getCount()];
+                while (c.moveToNext()) {
+                    entries[counter++] = new CourseTableInfo(c);
+                }
+                break;
+            case TABLE_COURSE_TABLE_ENTRY_INFO:
+                entries = new CourseTableEntryInfo[c.getCount()];
+                while (c.moveToNext()) {
+                    entries[counter++] = new CourseTableEntryInfo(c);
+                }
+                break;
+            case TABLE_MAJOR_INFO:
+                entries = new MajorInfo[c.getCount()];
+                while (c.moveToNext()) {
+                    entries[counter++] = new MajorInfo(c);
+                }
+                break;
+            case TABLE_MEMO_INFO:
+                entries = new MemoInfo[c.getCount()];
+                while (c.moveToNext()) {
+                    entries[counter++] = new MemoInfo(c);
+                }
+                break;
+            case TABLE_SCHOOL_INFO:
+                entries = new SchoolInfo[c.getCount()];
+                while (c.moveToNext()) {
+                    entries[counter++] = new SchoolInfo(c);
+                }
+                break;
+            case TABLE_SCHOOL_ROLL_INFO:
+                entries = new SchoolRollInfo[c.getCount()];
+                while (c.moveToNext()) {
+                    entries[counter++] = new SchoolRollInfo(c);
+                }
+                break;
+            case TABLE_TEACHER_INFO:
+                entries = new TeacherInfo[c.getCount()];
+                while (c.moveToNext()) {
+                    entries[counter++] = new TeacherInfo(c);
+                }
                 break;
             default:
                 return null;
-        }
-        while (c.moveToNext()) {
-            entries[counter++] = new UserInfo(c);
         }
         return entries;
     }
