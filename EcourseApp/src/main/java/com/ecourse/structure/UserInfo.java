@@ -77,6 +77,7 @@ public class UserInfo extends SQLEntry implements Constants {
     public boolean checkUsernameAndPassword(String username, String password) {
         return (username.equals(cv.get(UK_USERNAME)) && password.equals(cv.get(IDX_PASSWORD)));
     }
+
     public UserBean getUserBean() {
         UserBean userBean = new UserBean();
         userBean.setEmail((String) cv.get(IDX_EMAIL));
