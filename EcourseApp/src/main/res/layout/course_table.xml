@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+
         <TabHost
             android:id="@+id/tabhost"
             android:layout_width="match_parent"
@@ -26,12 +27,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TabWidget
-                    android:id="@android:id/tabs"
-                    android:background="@drawable/tab_bar"
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="30dp"/>
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/num_week"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content" />
+                    <TabWidget
+                        android:id="@android:id/tabs"
+                        android:background="@drawable/tab_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
                 <FrameLayout
                     android:id="@android:id/tabcontent"
                     android:background="@drawable/menu_bg"
@@ -44,7 +53,6 @@
                         android:layout_height="wrap_content"
                         android:divider="#0099ff"
                         android:dividerHeight="0.5dip" />
-                    <!--  android:background="#90FF00"  -->
                     <ListView
                         android:id="@+id/list1"
                         android:scrollbars="none"
@@ -52,7 +60,6 @@
                         android:layout_height="wrap_content"
                         android:divider="#0099ff"
                         android:dividerHeight="0.5dip"  />
-                    <!--  android:background="#FFFF00"  -->
                     <ListView
                         android:id="@+id/list2"
                         android:scrollbars="none"
@@ -60,7 +67,6 @@
                         android:layout_height="wrap_content"
                         android:divider="#0099ff"
                         android:dividerHeight="0.5dip" />
-                    <!--  android:background="#90FF0D"  -->
                     <ListView
                         android:id="@+id/list3"
                         android:scrollbars="none"
@@ -68,7 +74,6 @@
                         android:layout_height="wrap_content"
                         android:divider="#0099ff"
                         android:dividerHeight="0.5dip"  />
-                    <!--  android:background="#00FF0D"  -->
                     <ListView
                         android:id="@+id/list4"
                         android:scrollbars="none"
@@ -76,7 +81,6 @@
                         android:layout_height="wrap_content"
                         android:divider="#0099ff"
                         android:dividerHeight="0.5dip"  />
-                    <!--  android:background="#90FF0D"  -->
                     <ListView
                         android:id="@+id/list5"
                         android:scrollbars="none"
@@ -84,7 +88,6 @@
                         android:layout_height="wrap_content"
                         android:divider="#0099ff"
                         android:dividerHeight="0.5dip" />
-                    <!--  android:background="#FFFF00"  -->
                     <ListView
                         android:id="@+id/list6"
                         android:scrollbars="none"
@@ -92,7 +95,6 @@
                         android:layout_height="wrap_content"
                         android:divider="#0099ff"
                         android:dividerHeight="0.5dip" />
-                    <!--  android:background="#90FF0D"  -->
                 </FrameLayout>
             </LinearLayout>
         </TabHost>

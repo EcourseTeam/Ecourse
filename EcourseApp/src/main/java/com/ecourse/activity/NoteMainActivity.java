@@ -14,7 +14,7 @@ import es.source.code.activity.R;
 
 public class NoteMainActivity extends Activity implements View.OnClickListener {
 
-    private Button textbtn, imgbtn, videobtn;
+    private Button textbtn, imgbtn;
     private ListView lv;
     private Intent i;
     private NoteAdapter adapter;
@@ -33,10 +33,8 @@ public class NoteMainActivity extends Activity implements View.OnClickListener {
         lv = (ListView) findViewById(R.id.list);     //找到控件
         textbtn = (Button) findViewById(R.id.text);
         imgbtn = (Button) findViewById(R.id.img);
-        videobtn = (Button) findViewById(R.id.video);
         textbtn.setOnClickListener(this);
         imgbtn.setOnClickListener(this);
-        videobtn.setOnClickListener(this);
         notesDB = new NotesDB(this);  //数据库
         dbReader = notesDB.getReadableDatabase();
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {//绑定监听器
@@ -54,8 +52,6 @@ public class NoteMainActivity extends Activity implements View.OnClickListener {
                         cursor.getString(cursor.getColumnIndex(NotesDB.TIME)));
                 i.putExtra(NotesDB.PATH,
                         cursor.getString(cursor.getColumnIndex(NotesDB.PATH)));
-                i.putExtra(NotesDB.VIDEO,
-                        cursor.getString(cursor.getColumnIndex(NotesDB.VIDEO)));
                 startActivity(i);
             }
         });
@@ -72,11 +68,6 @@ public class NoteMainActivity extends Activity implements View.OnClickListener {
 
             case R.id.img:
                 i.putExtra("flag", "2");
-                startActivity(i);
-                break;
-
-            case R.id.video:
-                i.putExtra("flag", "3");
                 startActivity(i);
                 break;
         }

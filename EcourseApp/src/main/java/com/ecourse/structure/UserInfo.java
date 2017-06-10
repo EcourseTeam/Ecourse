@@ -8,8 +8,6 @@ import com.ecourse.util.Constants;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Map.Entry;
-
 public class UserInfo extends SQLEntry implements Constants {
 
     public static final String PK_USER_ID                       = "pk_UserId";
@@ -78,5 +76,15 @@ public class UserInfo extends SQLEntry implements Constants {
 
     public boolean checkUsernameAndPassword(String username, String password) {
         return (username.equals(cv.get(UK_USERNAME)) && password.equals(cv.get(IDX_PASSWORD)));
+    }
+    public UserBean getUserBean() {
+        UserBean userBean = new UserBean();
+        userBean.setEmail((String) cv.get(IDX_EMAIL));
+        userBean.setNickname((String) cv.get(IDX_NICKNAME));
+        userBean.setUserName((String) cv.get(UK_USERNAME));
+        userBean.setSchool((int)cv.get(FK_SCHOOL_ROLL_ID) + "");
+        userBean.setStudentNo((String) cv.get(IDX_STUDENT_NUMBER));
+        userBean.setPassword((String) cv.get(IDX_PASSWORD));
+        return userBean;
     }
 }

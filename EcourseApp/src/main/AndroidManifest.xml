@@ -24,23 +24,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.ecourse.activity.CourseTable">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name="com.ecourse.activity.Register">
-
-        </activity>
+        <activity android:name="com.ecourse.activity.CourseTable" />
+        <activity android:name="com.ecourse.activity.Register" />
         <activity android:name="com.ecourse.activity.Login" />
         <activity android:name="com.ecourse.activity.NoteMainActivity" />
         <activity android:name="com.ecourse.activity.AddContent" />
         <activity android:name="com.ecourse.activity.SelectAct" />
         <activity android:name="com.ecourse.activity.About" />
         <activity android:name="com.ecourse.activity.Feedback" />
-        <activity android:name="com.ecourse.activity.AddCoursesActivity"></activity>
+        <activity android:name="com.ecourse.activity.Info" />
     </application>
 
 </manifest>

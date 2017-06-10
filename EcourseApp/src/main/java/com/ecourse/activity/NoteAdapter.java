@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.ThumbnailUtils;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,16 +53,12 @@ public class NoteAdapter extends BaseAdapter {
         TextView contenttv = (TextView) layout.findViewById(R.id.list_content);
         TextView timetv = (TextView) layout.findViewById(R.id.list_time);
         ImageView imgiv = (ImageView) layout.findViewById(R.id.list_img);
-        ImageView videoiv = (ImageView) layout.findViewById(R.id.list_video);
         cursor.moveToPosition(position);
         String content = cursor.getString(cursor.getColumnIndex("content"));
         String time = cursor.getString(cursor.getColumnIndex("time"));
         String url = cursor.getString(cursor.getColumnIndex("path"));
-        String urlvideo = cursor.getString(cursor.getColumnIndex("video"));
         contenttv.setText(content);
         timetv.setText(time);
-        videoiv.setImageBitmap(getVideoThumbnail(urlvideo, 200, 200,
-                MediaStore.Images.Thumbnails.MICRO_KIND));
         imgiv.setImageBitmap(getImageThumbnail(url, 200, 200));
         return layout;
     }
@@ -89,15 +84,6 @@ public class NoteAdapter extends BaseAdapter {
         bitmap = BitmapFactory.decodeFile(uri, options);
         bitmap = ThumbnailUtils.extractThumbnail(bitmap, width, height,
                 ThumbnailUtils.OPTIONS_RECYCLE_INPUT);
-        return bitmap;
-    }
-
-    private Bitmap getVideoThumbnail(String uri, int width, int height, int kind) {
-        Bitmap bitmap = null;
-        bitmap = ThumbnailUtils.createVideoThumbnail(uri, kind);
-        bitmap = ThumbnailUtils.extractThumbnail(bitmap, width, height,
-                ThumbnailUtils.OPTIONS_RECYCLE_INPUT);
-
         return bitmap;
     }
 

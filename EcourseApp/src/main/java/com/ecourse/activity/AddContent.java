@@ -64,15 +64,6 @@ public class AddContent extends Activity implements View.OnClickListener {
             iimg.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(phoneFile));
             startActivityForResult(iimg, 1);
         }
-        if (val.equals("3")) {  //视频
-            c_img.setVisibility(View.GONE);
-            v_video.setVisibility(View.VISIBLE);
-            Intent video = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-            videoFile = new File(Environment.getExternalStorageDirectory()
-                    .getAbsoluteFile() + "/" + getTime() + ".mp4");
-            video.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(videoFile));
-            startActivityForResult(video, 2);
-        }
     }
 
     @Override
@@ -82,7 +73,6 @@ public class AddContent extends Activity implements View.OnClickListener {
                 addDB();
                 finish();
                 break;
-
             case R.id.delete:
                 finish();
                 break;

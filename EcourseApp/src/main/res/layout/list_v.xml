@@ -18,7 +18,7 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_weight="7"
         android:paddingLeft="10dp">
 
@@ -40,16 +40,6 @@
                 android:textSize="22sp"
                 tools:ignore="HardcodedText" />
 
-            <!--<TextView-->
-                <!--android:id="@+id/ltext1"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:text="if"-->
-                <!--android:textSize="18sp"-->
-                <!--android:singleLine="true"-->
-                <!--android:textColor="#004499"-->
-                <!--tools:ignore="HardcodedText" />-->
         </TableRow>
 
         <TableRow
@@ -73,16 +63,7 @@
                 android:singleLine="true"
                 android:textColor="#004499"
                 tools:ignore="HardcodedText" />
-            <!--<TextView-->
-                <!--android:id="@+id/ltext7"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:text="if"-->
-                <!--android:textSize="18sp"-->
-                <!--android:singleLine="true"-->
-                <!--android:textColor="#004499"-->
-                <!--tools:ignore="HardcodedText" />-->
+
         </TableRow>
     </TableLayout>
 

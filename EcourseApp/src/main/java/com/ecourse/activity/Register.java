@@ -8,8 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import es.source.code.activity.R;
 import com.ecourse.database.UserInfoDao;
+
+import es.source.code.activity.R;
 
 
 public class Register extends Activity {
@@ -17,7 +18,7 @@ public class Register extends Activity {
     private EditText password;
     private EditText nickname;
     private EditText schoolid;
-    private EditText schoolnum;
+    private EditText studentnum;
     private EditText email;
     private Button button_reg;
     private Button button_back;
@@ -34,64 +35,50 @@ public class Register extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         username = (EditText)findViewById(R.id.username);
+        nickname = (EditText) findViewById(R.id.nickname);
         password = (EditText)findViewById(R.id.password);
+        schoolid = (EditText) findViewById(R.id.school_id);
+        studentnum = (EditText) findViewById(R.id.student_num);
+        email = (EditText)findViewById(R.id.email);
         button_reg = (Button)findViewById(R.id.button_reg);
         button_back = (Button)findViewById(R.id.button_back);
-
-//        offlineDao = new OfflineDaoImpl(this);
         userInfoDao = new UserInfoDao(this);
 
         button_reg.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                String str1 = username.getText().toString();
-                String str2 = password.getText().toString();
-//                String str3 = nickname.getText().toString();
-//                String str4 = schoolid.getText().toString();
-//                String str5 = schoolnum.getText().toString();
-//                String str6 = email.getText().toString();
+                String usernameStr = username.getText().toString();
+                String passwordStr = password.getText().toString();
+                String nicknameStr = nickname.getText().toString();
+                String schoolidStr = schoolid.getText().toString();
+                String studentnumStr = studentnum.getText().toString();
+                String emailStr = email.getText().toString();
 
-//                ContentValues filter = new ContentValues();
-//                filter.put("uk_Username", "q");
-//                UserInfo[] entries = (UserInfo[])offlineDao.getEntries(OfflineDao.TABLE_USER_INFO);
-
-                if (!checkString(str1)) {
+                if (!checkString(usernameStr)) {
                     username.setError("输入内容不符合规则");
-                }else if (userInfoDao.has(str1)) {
+                }else if (userInfoDao.has(usernameStr)) {
                     Toast.makeText(Register.this, "用户名已被占用!", Toast.LENGTH_SHORT).show();
                     return;
-                }else if (!checkString(str2)) {
+                }else if (!checkString(passwordStr)) {
                     password.setError("输入内容不符合规则");
-                }
-//                else if (str3 == null){
-//                    Toast.makeText(Register.this, "昵称不能为空!", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }else if (str4 == null) {
-//                    Toast.makeText(Register.this, "学校不能为空!", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }else if (str5 == null) {
-//                    Toast.makeText(Register.this, "学号不能为空!", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }else if (str6 == null) {
-//                    Toast.makeText(Register.this, "邮箱不能为空!", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-                else {
-//                    UserInfo userInfo = new UserInfo("q", "q");
-//                    long tmp = offlineDao.addEntry(OfflineDao.TABLE_USER_INFO, userInfo);
-//                    Log.i("test", tmp + "");
-                    userInfoDao.add(str1, str2);
+                } else if (nicknameStr == null){
+                    Toast.makeText(Register.this, "昵称不能为空!", Toast.LENGTH_SHORT).show();
+                    return;
+                }else if (schoolidStr == null) {
+                    Toast.makeText(Register.this, "学校不能为空!", Toast.LENGTH_SHORT).show();
+                    return;
+                }else if (studentnumStr == null) {
+                    Toast.makeText(Register.this, "学号不能为空!", Toast.LENGTH_SHORT).show();
+                    return;
+                }else if (emailStr == null) {
+                    Toast.makeText(Register.this, "邮箱不能为空!", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    userInfoDao.add(usernameStr, nicknameStr, passwordStr, emailStr, -1, studentnumStr, 1, 0);
 
-//                    UserInfo tmp = getEntries(OfflineDao.TABLE_USER_INFO);
-//
-//                    for (int i=0; i<tmp.length; ++i) {
-//                        Log.i("test", tmp[i].toString());
-//                    }
                     Toast.makeText(Register.this, "注册成功!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent();
                     intent.setClass(Register.this,Login.class);
-//                    intent.putExtra("loginState",1);
-//                    setResult(result_code1,intent);
                     startActivity(intent);
                 }
 
@@ -99,7 +86,6 @@ public class Register extends Activity {
 
 
         });
-
 
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,7 +102,6 @@ public class Register extends Activity {
         });
 
     }
-
 
     @Override
     public void onBackPressed(){

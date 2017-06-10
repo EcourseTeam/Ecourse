@@ -23,7 +23,7 @@ public class Login extends Activity {
     //    private OfflineDao offlineDao;
     private UserInfoDao userInfoDao;
     public Context context = this;
-
+    private LocalManager localManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +33,9 @@ public class Login extends Activity {
         password = (EditText)findViewById(R.id.password);
         button_ok = (Button)findViewById(R.id.button_ok);
         button_back = (Button)findViewById(R.id.button_back);
-//        offlineDao = new OfflineDaoImpl(this);
         userInfoDao = new UserInfoDao(this);
+
+        localManager = new LocalManager(this);
 
 
         button_ok.setOnClickListener(new View.OnClickListener(){
@@ -50,6 +51,8 @@ public class Login extends Activity {
                     Intent intent = new Intent();
                     intent.setClass(Login.this,CourseTable.class);
                     startActivity(intent);
+                    localManager.setLogin(true);
+                    localManager.setUserId(str1);
                     Toast.makeText(Login.this, "登录成功!", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(Login.this, "用户名或密码错误!", Toast.LENGTH_SHORT).show();
@@ -63,13 +66,6 @@ public class Login extends Activity {
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent();
-//                Bundle bundle = new Bundle();
-//
-//                    bundle.putString("Key3","Return");
-//                    bundle.putInt("isFromBack",isFromBack);
-//                    intent.putExtras(bundle);
-//                    setResult(result_code2,intent);
                 finish();
             }
         });

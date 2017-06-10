@@ -121,10 +121,6 @@ public class DataBase extends SQLiteOpenHelper{
         for(int i=0;i<7;i++) {
             Cursor c=db.query(TB_NAME[i],null,null,null,null,null,null);
             if(c.moveToFirst()){
-//              String[] columnNames = c.getColumnNames();
-//              for(String name : columnNames) {
-//                  Log.d("names",name);
-//              }
                 Log.d("classes:",c.getString(1));
                 c.moveToNext();
             }

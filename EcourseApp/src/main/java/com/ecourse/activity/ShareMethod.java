@@ -17,6 +17,15 @@ public class ShareMethod {
         int weekDay=calendar.get(Calendar.DAY_OF_WEEK)-1;
         return weekDay;
     }
+    public static int getWeeks(){
+        Calendar cal = Calendar.getInstance();
+        cal.setFirstDayOfWeek(Calendar.MONDAY); // 设置每周的第一天为星期一
+        cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);// 每周从周一开始
+        cal.setMinimalDaysInFirstWeek(7); // 设置每周最少为7天
+        cal.setTime(new Date());
+        int weeks=cal.get(Calendar.WEEK_OF_YEAR);
+        return weeks;
+    }
 
     //获取当前的时间,并以字符串"xx:xx"的形式返回
     public static String getTime(){

@@ -27,10 +27,7 @@ public class MyDialog {
     private EditText course_address;
     private EditText course_teacher;
     private EditText course_week;
-    //	private EditText course_time1,course_time2;
     private EditText course_count;
-
-
     private View view;
     private Context context;
     private LayoutInflater inflater;
@@ -71,7 +68,7 @@ public class MyDialog {
         });
 
         builder=new AlertDialog.Builder(context)
-                .setIcon(R.drawable.ic_launcher2)
+                .setIcon(R.drawable.ic_launcher)
                 .setTitle("编辑课程信息")
                 .setView(view)
                 .setPositiveButton("确认",new DialogInterface.OnClickListener(){
@@ -155,10 +152,8 @@ public class MyDialog {
         course_time2.setText(temp[5]);
         course_count.setText(temp[6]);
         view.invalidate();
-
-
         builder=new AlertDialog.Builder(context)
-                .setIcon(R.drawable.ic_launcher2)
+                .setIcon(R.drawable.ic_launcher)
                 .setTitle("修改课程信息")
                 .setView(view)
                 .setPositiveButton("确认",new DialogInterface.OnClickListener(){
@@ -203,7 +198,6 @@ public class MyDialog {
                                     }
                                     break;
                             }
-
                         }
                         //若节数有变化，先确定新节数并赋予旧的数据再更新数据
                         else{
@@ -237,7 +231,6 @@ public class MyDialog {
                                         }
                                         break;
                                 }
-
                             }
                             //缩减节数：删除旧数据再根据新的节数赋予旧数据最后更新新数据
                             if(n3<n1){
@@ -303,7 +296,6 @@ public class MyDialog {
                         }
                         main.cursor[day].requery();
                         main.list[day].invalidate();
-
                     }
 
                 })
@@ -311,13 +303,9 @@ public class MyDialog {
 
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-
-
                     }
-
                 });
         builder.create().show();
-
     }
 
     private void findWidgetes(){

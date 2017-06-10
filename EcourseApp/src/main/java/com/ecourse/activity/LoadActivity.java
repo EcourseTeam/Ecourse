@@ -11,7 +11,6 @@ import es.source.code.activity.R;
 
 public class LoadActivity extends Activity {
 
-    //time for picture display
     private static final int LOAD_DISPLAY_TIME = 3000;
 
     /** Called when the activity is first created. */

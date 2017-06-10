@@ -1,13 +1,11 @@
 package com.ecourse.activity;
 
 import android.app.AlertDialog;
-import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.media.AudioManager;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -31,9 +29,9 @@ import es.source.code.activity.R;
 public class CourseTable extends AppCompatActivity {
 
     public ListView list[] = new ListView[7];
-    private TabHost tabs   = null;
+    private TabHost tabs = null;
     public static DataBase db;
-    public Cursor[] cursor=new Cursor[7];
+    public Cursor[] cursor = new Cursor[7];
     public SimpleCursorAdapter adapter;
     private SharedPreferences pre;
 
@@ -62,6 +60,9 @@ public class CourseTable extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem item){
                 switch (item.getItemId()){
                     case R.id.nav_info:
+                        Intent intent_info = new Intent();
+                        intent_info.setClass(CourseTable.this, Info.class);
+                        startActivity(intent_info);
                         break;
                     case R.id.nav_note:
                         Intent intent_note = new Intent();
@@ -137,13 +138,6 @@ public class CourseTable extends AppCompatActivity {
             list[i].setAdapter(adapter(i));
         }
 
-        //声明一个获取系统音频服务的类的对象
-        final AudioManager audioManager = (AudioManager)getSystemService(Service.AUDIO_SERVICE);
-        //获取手机之前设置好的铃声模式,该数据将用来传递给activity_set
-        final int orgRingerMode = audioManager.getRingerMode();
-
-
-
         for( int day=0;day<7;day++){
             //为七个ListView绑定触碰监听器，将其上的触碰事件交给GestureDetector处理
             //此监听器是必须的，不然滑动手势只在ListView下的空白区域有效，而在ListView上无效
@@ -163,7 +157,7 @@ public class CourseTable extends AppCompatActivity {
                     final int currentDay=tabs.getCurrentTab();
                     final int n=id;
                     final AlertDialog.Builder builder = new AlertDialog.Builder(CourseTable.this);
-                    builder.setIcon(R.drawable.ic_launcher2);
+                    builder.setIcon(R.drawable.ic_launcher);
                     builder.setTitle("选择");
                     TextView tv=(TextView)arg1.findViewById(R.id.ltext0);
                     Log.i("Test",(tv.getText().toString().equals(""))+"");
@@ -176,10 +170,7 @@ public class CourseTable extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 //如果单击了该列表项，则跳转到编辑课程信息的界面
                                 if(which == 0){
-//                                    new MyDialog(CourseTable.this).add(currentDay,n);
-                                    Intent intent = new Intent();
-                                    intent.setClass(CourseTable.this, AddCoursesActivity.class);
-                                    startActivity(intent);
+                                    new MyDialog(CourseTable.this).add(currentDay,n);
                                 }
                             }
                         });
@@ -258,8 +249,6 @@ public class CourseTable extends AppCompatActivity {
             if(e1.getX() - e2.getX() > FLIP_DISTANCE){
                 if(i<6)
                     tabs.setCurrentTab(i+1);
-                //	float currentX = e2.getX();
-                //	list[i].setRight((int) (inialX - currentX));
                 return true;
             }
 
@@ -278,8 +267,7 @@ public class CourseTable extends AppCompatActivity {
         }
 
         @Override
-        public boolean onScroll(MotionEvent e1, MotionEvent e2,
-                                float distanceX, float distanceY) {
+        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
             return false;
         }
 
@@ -295,7 +283,6 @@ public class CourseTable extends AppCompatActivity {
 
     }
 
-
     //覆写Activity中的onTouchEvent方法，将该Activity上的触碰事件交给GestureDetector处理
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -303,7 +290,6 @@ public class CourseTable extends AppCompatActivity {
     }
 
     //设置菜单按钮
-
 
     //子 方法:为主界面添加选项卡
     public void addCard(TabHost.TabSpec spec,String tag,int id,String name){
@@ -349,6 +335,4 @@ public class CourseTable extends AppCompatActivity {
         }
         return true;
     }
-
-
 }
