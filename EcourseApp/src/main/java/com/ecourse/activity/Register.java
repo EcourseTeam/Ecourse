@@ -26,7 +26,6 @@ public class Register extends Activity {
     private int result_code1 = 101;
     private int result_code2 = 101;
 
-//    private OfflineDao offlineDao;
     private UserInfoDao userInfoDao;
 
 

@@ -20,7 +20,6 @@ public class Login extends Activity {
     private EditText password;
     private Button button_ok;
     private Button button_back;
-    //    private OfflineDao offlineDao;
     private UserInfoDao userInfoDao;
     public Context context = this;
     private LocalManager localManager;

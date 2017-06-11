@@ -3,7 +3,6 @@ package com.ecourse.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ecourse.database.UserInfoDao;
 import com.ecourse.structure.UserBean;
@@ -37,7 +36,6 @@ public class Info extends AppCompatActivity {
         localManager = new LocalManager(this);
         userNameStr = localManager.getUserId();
         userInfoDao = new UserInfoDao(this);
-        Toast.makeText(this, "userName = " + userNameStr, Toast.LENGTH_SHORT).show();
 
         userInfo = userInfoDao.get(userNameStr);
         userBean = userInfo.getUserBean();
