@@ -79,6 +79,11 @@ public class CourseTable extends AppCompatActivity {
                         intent_about.setClass(CourseTable.this, About.class);
                         startActivity(intent_about);
                         break;
+                    case R.id.nav_logout:
+                        Intent intent_logout = new Intent(CourseTable.this, Login.class);
+                        intent_logout.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent_logout);
+                        break;
                 }
                 mDrawerLayout.closeDrawers();
                 return true;

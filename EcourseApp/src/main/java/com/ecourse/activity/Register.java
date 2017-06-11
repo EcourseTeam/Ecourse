@@ -22,6 +22,7 @@ public class Register extends Activity {
     private EditText email;
     private Button button_reg;
     private Button button_back;
+    private Button button_login;
     private int isFromBack = 1;
     private int result_code1 = 101;
     private int result_code2 = 101;
@@ -41,8 +42,18 @@ public class Register extends Activity {
         email = (EditText)findViewById(R.id.email);
         button_reg = (Button)findViewById(R.id.button_reg);
         button_back = (Button)findViewById(R.id.button_back);
+        button_login = (Button) findViewById(R.id.button_login);
+
         userInfoDao = new UserInfoDao(this);
 
+        button_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_login = new Intent();
+                intent_login.setClass(Register.this,Login.class);
+                startActivity(intent_login);
+            }
+        });
         button_reg.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

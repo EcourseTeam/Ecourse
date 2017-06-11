@@ -20,6 +20,7 @@ public class Login extends Activity {
     private EditText password;
     private Button button_ok;
     private Button button_back;
+    private Button button_reg;
     private UserInfoDao userInfoDao;
     public Context context = this;
     private LocalManager localManager;
@@ -32,6 +33,8 @@ public class Login extends Activity {
         password = (EditText)findViewById(R.id.password);
         button_ok = (Button)findViewById(R.id.button_ok);
         button_back = (Button)findViewById(R.id.button_back);
+        button_reg = (Button) findViewById(R.id.button_reg);
+
         userInfoDao = new UserInfoDao(this);
 
         localManager = new LocalManager(this);
@@ -61,6 +64,14 @@ public class Login extends Activity {
             }
         });
 
+        button_reg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_reg = new Intent();
+                intent_reg.setClass(Login.this,Register.class);
+                startActivity(intent_reg);
+            }
+        });
 
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override

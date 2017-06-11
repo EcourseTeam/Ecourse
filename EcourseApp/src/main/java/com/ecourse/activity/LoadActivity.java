@@ -27,7 +27,7 @@ public class LoadActivity extends Activity {
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 if (localManager.getLogin()){
-                    Intent intent_main = new Intent(LoadActivity.this, CourseTable.class);
+                    Intent intent_main = new Intent(LoadActivity.this, Login.class);
                     LoadActivity.this.startActivity(intent_main);
                     LoadActivity.this.finish();
                 }else {

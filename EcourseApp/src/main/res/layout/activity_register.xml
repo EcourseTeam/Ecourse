@@ -7,14 +7,14 @@
     android:padding="20dp"
     tools:context="com.ecourse.activity.Register">
 
-    <!--<Button-->
-        <!--android:id="@+id/button_clear"-->
-        <!--android:layout_width="60dp"-->
-        <!--android:layout_height="20dp"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:text="注销"-->
-        <!--android:textSize="12dp"-->
-        <!--android:background="@android:color/transparent"/>-->
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:text="直接登录"
+        android:textSize="12dp"
+        android:background="@android:color/transparent"/>
     <TextView
         android:id="@+id/lableView"
         android:layout_width="wrap_content"
